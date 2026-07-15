@@ -26,6 +26,7 @@ figures are committed for convenient review. Results were last reproduced on
 | [TorchScript export](10_torchscript_export.md) | Can a controlled one-step model become a validated standalone artifact? | Genuine script mode, 32 saved-artifact checks, and zero numerical error. |
 | [Release validation](11_release_validation_2026071508.md) | Did the new release close the laboratory findings? | Seven fix areas confirmed; two narrower boundary gaps remain. |
 | [Aftershock relaxation](12_ridgecrest_aftershocks.md) | Does seismic activity remember a large shock through a power law? | A seven-day Omori fit predicts the next 23 days; exponential relaxation collapses too quickly. |
+| [Aftershock excitation](13_aftershock_excitation.md) | Do observed events improve the next conditional interval? | A magnitude-weighted kernel lowers holdout deviance by only `2.12%` and does not win most intervals. |
 
 ## Reproduction
 
@@ -48,6 +49,7 @@ The Ridgecrest report additionally requires:
 ```powershell
 .\.venv\Scripts\python.exe fetch_ridgecrest.py
 .\.venv\Scripts\python.exe aftershock_lab.py
+.\.venv\Scripts\python.exe aftershock_excitation_lab.py
 ```
 
 These are exploratory numerical experiments, not claims that every computed

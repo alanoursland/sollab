@@ -34,6 +34,7 @@ Use the repository's local environment:
 .\.venv\Scripts\python.exe space_weather_lab.py
 .\.venv\Scripts\python.exe fetch_ridgecrest.py
 .\.venv\Scripts\python.exe aftershock_lab.py
+.\.venv\Scripts\python.exe aftershock_excitation_lab.py
 ```
 
 Generated files are written to `artifacts/`:
@@ -62,6 +63,9 @@ The export lab additionally writes `controlled_lti_one_step.pt` and
 `export_analysis.json` with script-mode provenance and validation evidence.
 The aftershock lab writes `aftershock_lab.png` and `aftershock_analysis.json`
 with catalog provenance, model comparison, and holdout diagnostics.
+The excitation follow-up writes `aftershock_excitation_lab.png` and
+`aftershock_excitation_analysis.json` with strictly causal conditional scores
+and binning sensitivity.
 
 Run the regression checks with:
 
