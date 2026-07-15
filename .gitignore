@@ -1,7 +1,7 @@
 .venv
-AGENTS.md
 __pycache__/
 *.py[cod]
 artifacts/*.json
+artifacts/*.pt
 data/
 kinopulse_gaps/

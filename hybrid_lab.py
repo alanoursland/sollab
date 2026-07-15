@@ -66,7 +66,7 @@ def theoretical_accumulation_time():
 
 def main(output_dir: Path = Path("artifacts")) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
-    result = simulate()
+    result = simulate(horizon=4.2, zeno_time_window=0.01, zeno_action="stop")
     impact_times = torch.tensor([item["time"] for item in result.transitions], dtype=DTYPE)
     pre_velocities = torch.tensor([item["x_minus"][1] for item in result.transitions], dtype=DTYPE)
     post_velocities = torch.tensor([item["x_plus"][1] for item in result.transitions], dtype=DTYPE)
@@ -76,7 +76,8 @@ def main(output_dir: Path = Path("artifacts")) -> None:
     report = {
         "system": "inelastic bouncing ball",
         "restitution": RESTITUTION,
-        "impacts_before_four_seconds": len(result.transitions),
+        "impacts_before_four_seconds": int((impact_times < 4.0).sum().item()),
+        "impacts_before_zeno_detection": len(result.transitions),
         "first_impact_time": impact_times[0].item(),
         "theoretical_first_impact_time": (2.0 / GRAVITY) ** 0.5,
         "mean_velocity_ratio": observed_ratios.mean().item(),
@@ -84,7 +85,10 @@ def main(output_dir: Path = Path("artifacts")) -> None:
         "mean_energy_ratio": energy_ratios.mean().item(),
         "expected_energy_ratio": RESTITUTION**2,
         "theoretical_event_accumulation_time": theoretical_accumulation_time(),
-        "zeno_detected_before_four_seconds": result.zeno_detected,
+        "zeno_detected": result.zeno_detected,
+        "zeno_detection_time": result.t[-1].item(),
+        "zeno_reason": result.zeno_reason,
+        "zeno_action": "stop",
     }
     (output_dir / "hybrid_analysis.json").write_text(
         json.dumps(report, indent=2) + "\n", encoding="utf-8"

@@ -1,6 +1,7 @@
 import unittest
+import warnings
 
-from hybrid_lab import GRAVITY, RESTITUTION, simulate
+from hybrid_lab import GRAVITY, RESTITUTION, simulate, theoretical_accumulation_time
 
 
 class HybridLabTests(unittest.TestCase):
@@ -19,6 +20,18 @@ class HybridLabTests(unittest.TestCase):
             after = transition["x_plus"]
             self.assertAlmostEqual(after[0].item(), 0.0, delta=1e-12)
             self.assertAlmostEqual(after[1].item(), -RESTITUTION * before[1].item(), delta=1e-12)
+
+    def test_geometric_zeno_detection_stops_before_accumulation(self):
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+            result = simulate(
+                horizon=4.2,
+                zeno_time_window=0.01,
+                zeno_action="stop",
+            )
+        self.assertTrue(result.zeno_detected)
+        self.assertIn("Geometrically decreasing dwell times", result.zeno_reason)
+        self.assertLess(float(result.t[-1]), theoretical_accumulation_time())
 
 
 if __name__ == "__main__":

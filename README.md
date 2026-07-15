@@ -4,13 +4,17 @@ See [DREAMS.md](DREAMS.md) for the long-term vision behind this dynamics
 laboratory, and [RESEARCH_QUESTIONS.md](RESEARCH_QUESTIONS.md) for a prioritized
 portfolio built around public real-world datasets.
 
+Detailed methods, results, limitations, and reproduction instructions are in
+the [experiment reports](reports/README.md).
+
 This repository is an experimental field guide to nonlinear dynamics built with
 KinoPulse. The exhibits explore Lorenz chaos, pitchfork bifurcations, LQR
 control, sparse equation discovery, hybrid bouncing-ball dynamics, and heat
 diffusion, parametric resonance, and constrained pendulum dynamics. Together
 they exercise simulation, classification, stability, system identification,
-control synthesis, event detection, state resets, visualization, and real-data
-model discovery from NASA space-weather observations.
+control synthesis, event detection, state resets, TorchScript deployment,
+visualization, and real-data model discovery from NASA space-weather
+observations.
 
 ## Run
 
@@ -25,6 +29,7 @@ Use the repository's local environment:
 .\.venv\Scripts\python.exe diffusion_lab.py
 .\.venv\Scripts\python.exe resonance_lab.py
 .\.venv\Scripts\python.exe constraint_lab.py
+.\.venv\Scripts\python.exe export_lab.py
 .\.venv\Scripts\python.exe fetch_omni.py
 .\.venv\Scripts\python.exe space_weather_lab.py
 ```
@@ -50,6 +55,9 @@ Generated files are written to `artifacts/`:
 - `constraint_analysis.json` — initialization, drift, and energy diagnostics
 - `space_weather_lab.png` — observed and learned geomagnetic-storm response
 - `space_weather_analysis.json` — provenance, coefficients, and held-out errors
+
+The export lab additionally writes `controlled_lti_one_step.pt` and
+`export_analysis.json` with script-mode provenance and validation evidence.
 
 Run the regression checks with:
 

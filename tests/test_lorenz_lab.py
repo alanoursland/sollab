@@ -2,7 +2,7 @@ import unittest
 
 import torch
 
-from lorenz_lab import interpolate_trajectory, lorenz
+from lorenz_lab import lorenz
 from kinopulse.solvers.solve_functions import solve_ivp
 
 
@@ -12,12 +12,13 @@ class LorenzLabTests(unittest.TestCase):
         expected = torch.tensor([0.0, 26.0, -5.0 / 3.0])
         torch.testing.assert_close(derivative, expected)
 
-    def test_resampling_honors_requested_grid(self):
+    def test_solve_ivp_honors_requested_grid(self):
         requested = torch.linspace(0.0, 0.2, 21)
-        trajectory = solve_ivp(lorenz, (0.0, 0.2), torch.ones(3))
-        sampled = interpolate_trajectory(trajectory, requested)
-        self.assertEqual(sampled.shape, (21, 3))
-        torch.testing.assert_close(sampled[0], torch.ones(3))
+        span = (float(requested[0]), float(requested[-1]))
+        trajectory = solve_ivp(lorenz, span, torch.ones(3), t_eval=requested)
+        self.assertEqual(trajectory.states.shape, (21, 3))
+        torch.testing.assert_close(trajectory.times, requested, rtol=0, atol=0)
+        torch.testing.assert_close(trajectory.states[0], torch.ones(3))
 
 
 if __name__ == "__main__":

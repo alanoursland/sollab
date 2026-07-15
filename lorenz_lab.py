@@ -32,16 +32,6 @@ def lorenz(t: float, state: torch.Tensor, params=None) -> torch.Tensor:
     )
 
 
-def interpolate_trajectory(trajectory, sample_times: torch.Tensor) -> torch.Tensor:
-    """Linearly resample a KinoPulse trajectory onto a uniform time grid."""
-    times = trajectory.times
-    states = trajectory.states
-    indices = torch.searchsorted(times, sample_times, right=True).clamp(1, len(times) - 1)
-    left_t, right_t = times[indices - 1], times[indices]
-    weight = ((sample_times - left_t) / (right_t - left_t)).unsqueeze(-1)
-    return states[indices - 1] + weight * (states[indices] - states[indices - 1])
-
-
 def simulate(initial_state: torch.Tensor, horizon: float, samples: int):
     requested_times = torch.linspace(0.0, horizon, samples)
     trajectory = solve_ivp(
@@ -49,10 +39,11 @@ def simulate(initial_state: torch.Tensor, horizon: float, samples: int):
         (0.0, horizon),
         initial_state,
         method="RK45",
+        t_eval=requested_times,
         rtol=1e-7,
         atol=1e-9,
     )
-    return requested_times, interpolate_trajectory(trajectory, requested_times)
+    return trajectory.times, trajectory.states
 
 
 def main(output_dir: Path = Path("artifacts")) -> None:

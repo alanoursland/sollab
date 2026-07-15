@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import warnings
 from pathlib import Path
 
 import matplotlib
@@ -49,6 +50,27 @@ def solve_resolution(points: int):
     return x, numerical, exact, error, trajectory
 
 
+def probe_stability_warning(points: int = 51, dt: float = 0.01):
+    """Return warnings emitted for an intentionally unsafe explicit step."""
+    grid = Grid(1, (points,), [(0.0, 1.0)], [False], dtype=DTYPE)
+    x = grid.meshgrid()[0]
+    initial = Field(torch.sin(torch.pi * x).reshape(1, 1, -1), grid, channels=1)
+    boundaries = [
+        BoundaryCondition("dirichlet", "left", 0, value=0.0),
+        BoundaryCondition("dirichlet", "right", 0, value=0.0),
+    ]
+    with warnings.catch_warnings(record=True) as captured:
+        warnings.simplefilter("always")
+        solve_pde(
+            HeatEquation(grid, alpha=ALPHA),
+            (0.0, 0.001),
+            initial,
+            boundaries,
+            dt=dt,
+        )
+    return [str(item.message) for item in captured]
+
+
 def main(output_dir: Path = Path("artifacts")) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
     resolutions = [26, 51, 101]
@@ -61,6 +83,7 @@ def main(output_dir: Path = Path("artifacts")) -> None:
 
     finest_x, finest_numerical, finest_exact, _, finest_trajectory = solutions[-1]
     variances = [field.data.var().item() for field in finest_trajectory.fields]
+    stability_warnings = probe_stability_warning()
     report = {
         "system": "one-dimensional heat equation",
         "diffusivity": ALPHA,
@@ -71,6 +94,7 @@ def main(output_dir: Path = Path("artifacts")) -> None:
         "variance_monotonically_decreases": all(
             later <= earlier + 1e-12 for earlier, later in zip(variances, variances[1:])
         ),
+        "unsafe_timestep_warnings": stability_warnings,
     }
     (output_dir / "diffusion_analysis.json").write_text(
         json.dumps(report, indent=2) + "\n", encoding="utf-8"

@@ -1,4 +1,5 @@
 import unittest
+import re
 
 from discovery_lab import discover
 
@@ -28,6 +29,11 @@ class DiscoveryLabTests(unittest.TestCase):
             self.assertAlmostEqual(
                 self.system.coefficients[rows[feature], output].item(), value, delta=0.03
             )
+
+    def test_default_equation_format_is_decimal(self):
+        equations = self.system.get_equations(state_names=["x", "y", "z"])
+        self.assertIn("-9.997*x0", equations)
+        self.assertIsNone(re.search(r"\d+/\d+", equations))
 
 
 if __name__ == "__main__":

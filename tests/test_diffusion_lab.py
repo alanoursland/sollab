@@ -1,6 +1,6 @@
 import unittest
 
-from diffusion_lab import solve_resolution
+from diffusion_lab import probe_stability_warning, solve_resolution
 
 
 class DiffusionLabTests(unittest.TestCase):
@@ -12,6 +12,11 @@ class DiffusionLabTests(unittest.TestCase):
         _, _, _, _, trajectory = solve_resolution(51)
         variances = [field.data.var().item() for field in trajectory.fields]
         self.assertTrue(all(b <= a + 1e-12 for a, b in zip(variances, variances[1:])))
+
+    def test_unsafe_explicit_timestep_emits_warning(self):
+        messages = probe_stability_warning()
+        self.assertEqual(len(messages), 1)
+        self.assertIn("exceeds the estimated diffusion stability limit", messages[0])
 
 
 if __name__ == "__main__":

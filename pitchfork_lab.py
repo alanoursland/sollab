@@ -54,7 +54,7 @@ def main(output_dir: Path = Path("artifacts")) -> None:
         "continuation_successful": sweep.continuation_successful,
         "kinopulse_detector": detector_report,
         "analytical_bifurcation": {"parameter_value": 0.0, "type": "pitchfork"},
-        "note": "Detector output is retained verbatim; see kinopulse_gaps.",
+        "note": "Detector output is retained verbatim; neutral zero-eigenvalue events are merged.",
     }
     (output_dir / "pitchfork_analysis.json").write_text(
         json.dumps(report, indent=2) + "\n", encoding="utf-8"

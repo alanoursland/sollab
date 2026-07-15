@@ -15,7 +15,7 @@ from kinopulse.identification.sparse import SparseIdentifier
 from kinopulse.solvers.solve_functions import solve_ivp
 from kinopulse.solvers.trajectory import SolverTrajectory
 
-from lorenz_lab import interpolate_trajectory, simulate
+from lorenz_lab import simulate
 
 
 DTYPE = torch.float64
@@ -41,33 +41,29 @@ def discover():
     return identifier, system
 
 
-def decimal_equations(system, tolerance: float = 1e-6):
-    names = system.feature_names
-    equations = []
-    for output, variable in enumerate(("x", "y", "z")):
-        terms = [
-            f"{coefficient.item():+.4f}*{name}"
-            for coefficient, name in zip(system.coefficients[:, output], names)
-            if abs(coefficient.item()) > tolerance
-        ]
-        equations.append(f"d{variable}/dt = " + " ".join(terms).lstrip("+"))
-    return equations
-
-
 def simulate_discovered(system, initial: torch.Tensor, horizon: float = 3.0, samples: int = 601):
     def learned_dynamics(t, state):
         features = system.library.build_library(state.unsqueeze(0))[0]
         return features @ system.coefficients
 
-    trajectory = solve_ivp(learned_dynamics, (0.0, horizon), initial, rtol=1e-8, atol=1e-10)
     times = torch.linspace(0.0, horizon, samples, dtype=DTYPE)
-    return times, interpolate_trajectory(trajectory, times)
+    trajectory = solve_ivp(
+        learned_dynamics,
+        (0.0, horizon),
+        initial,
+        t_eval=times,
+        rtol=1e-8,
+        atol=1e-10,
+    )
+    return trajectory.times, trajectory.states
 
 
 def main(output_dir: Path = Path("artifacts")) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
     _, system = discover()
-    equations = decimal_equations(system)
+    equations = system.get_equations(
+        state_names=["x", "y", "z"], coefficient_format=".5g"
+    ).splitlines()
     active_terms = int((system.coefficients.abs() > 1e-6).sum().item())
 
     initial = torch.tensor([2.0, 3.0, 15.0], dtype=DTYPE)
