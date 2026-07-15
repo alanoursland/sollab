@@ -1,1 +1,6 @@
 .venv
+AGENTS.md
+__pycache__/
+*.py[cod]
+artifacts/
+kinopulse_gaps/
