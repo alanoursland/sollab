@@ -30,6 +30,7 @@ figures are committed for convenient review. Results were last reproduced on
 | [Aftershock spatial memory](14_aftershock_spatial_memory.md) | Can causal regional activity predict where the next event occurs? | A plausible latent state cuts training spatial deviance `16.1%` but worsens holdout by `3.1%`. |
 | [Aftershock law transfer](15_aftershock_law_transfer.md) | Does one relaxation shape transfer to an unseen earthquake? | Transferred Omori wins `5 / 8` sequences but fails oppositely on El Mayor and Ridgecrest. |
 | [Hierarchical aftershock transfer](16_hierarchical_aftershock_transfer.md) | When should a new sequence escape the population shape? | Partial pooling cuts summed deviance `74.1%` and its 80% totals cover `7 / 8` sequences. |
+| [Aftershock meta-prediction](17_aftershock_population_meta_prediction.md) | Can mainshock metadata and the first day predict a sequence's decay personality? | Model-blind screening retains 12 sequences, but conditioned point estimates worsen held-out count forecasts. |
 
 ## Reproduction
 
@@ -57,6 +58,8 @@ The Ridgecrest report additionally requires:
 .\.venv\Scripts\python.exe fetch_aftershock_benchmark.py
 .\.venv\Scripts\python.exe aftershock_transfer_lab.py
 .\.venv\Scripts\python.exe aftershock_hierarchy_lab.py
+.\.venv\Scripts\python.exe fetch_aftershock_population.py
+.\.venv\Scripts\python.exe aftershock_meta_lab.py
 ```
 
 These are exploratory numerical experiments, not claims that every computed

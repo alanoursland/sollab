@@ -39,6 +39,8 @@ Use the repository's local environment:
 .\.venv\Scripts\python.exe fetch_aftershock_benchmark.py
 .\.venv\Scripts\python.exe aftershock_transfer_lab.py
 .\.venv\Scripts\python.exe aftershock_hierarchy_lab.py
+.\.venv\Scripts\python.exe fetch_aftershock_population.py
+.\.venv\Scripts\python.exe aftershock_meta_lab.py
 ```
 
 Generated files are written to `artifacts/`:
@@ -79,6 +81,9 @@ and complete USGS query provenance.
 The hierarchical follow-up writes `aftershock_hierarchy_lab.png` and
 `aftershock_hierarchy_analysis.json`, with nested pooling selection and
 population predictive intervals.
+The population meta-prediction follow-up writes `aftershock_meta_prediction.png`
+and `aftershock_meta_results.json`. Its generated selection manifest preserves
+the model-blind USGS population screen and every rejection reason.
 
 Run the regression checks with:
 
