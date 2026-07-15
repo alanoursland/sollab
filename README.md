@@ -41,6 +41,8 @@ Use the repository's local environment:
 .\.venv\Scripts\python.exe aftershock_hierarchy_lab.py
 .\.venv\Scripts\python.exe fetch_aftershock_population.py
 .\.venv\Scripts\python.exe aftershock_meta_lab.py
+.\.venv\Scripts\python.exe aftershock_population_hierarchy_lab.py
+.\.venv\Scripts\python.exe aftershock_count_guard_lab.py
 ```
 
 Generated files are written to `artifacts/`:
@@ -84,6 +86,10 @@ population predictive intervals.
 The population meta-prediction follow-up writes `aftershock_meta_prediction.png`
 and `aftershock_meta_results.json`. Its generated selection manifest preserves
 the model-blind USGS population screen and every rejection reason.
+The expanded hierarchy and count-space guard write
+`aftershock_population_hierarchy.png` and `aftershock_count_guard.png`, with
+nested validation evidence showing both successful adaptation and explicit
+rejection of unsafe metadata corrections.
 
 Run the regression checks with:
 
