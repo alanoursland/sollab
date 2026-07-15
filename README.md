@@ -36,6 +36,8 @@ Use the repository's local environment:
 .\.venv\Scripts\python.exe aftershock_lab.py
 .\.venv\Scripts\python.exe aftershock_excitation_lab.py
 .\.venv\Scripts\python.exe aftershock_spatial_lab.py
+.\.venv\Scripts\python.exe fetch_aftershock_benchmark.py
+.\.venv\Scripts\python.exe aftershock_transfer_lab.py
 ```
 
 Generated files are written to `artifacts/`:
@@ -70,6 +72,9 @@ and binning sensitivity.
 The spatial-memory follow-up writes `aftershock_spatial_lab.png` and
 `aftershock_spatial_analysis.json`, including along-strike holdout diagnostics
 and a deliberately preserved overfitting result.
+The transfer benchmark writes `aftershock_transfer_lab.png` and
+`aftershock_transfer_analysis.json`, with eight leave-one-sequence-out folds
+and complete USGS query provenance.
 
 Run the regression checks with:
 

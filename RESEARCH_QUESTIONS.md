@@ -175,12 +175,12 @@ substantial NOAA data handling.
 
 ## 7. What dynamical law governs aftershock cascades?
 
-**Status:** Three Ridgecrest experiments are implemented in `aftershock_lab.py`,
-`aftershock_excitation_lab.py`, and `aftershock_spatial_lab.py`, documented in
-reports 12 through 14. They establish a power-law baseline, find only a small
-aggregate gain from temporal event history, and show that an interpretable
-regional state overfits an out-of-time spatial regime change. Cross-sequence
-validation is now the important test.
+**Status:** Four aftershock experiments are documented in reports 12 through
+15. The first three establish the Ridgecrest baseline and expose temporal and
+spatial overfitting. The fourth adds eight whole-sequence USGS folds: a shared
+Omori law regularizes small catalogs and wins five folds, but fails oppositely
+on El Mayor and Ridgecrest. A hierarchical, uncertainty-aware population model
+is now the important test.
 
 **Why I want this:** Earthquakes are events interacting across time, magnitude,
 depth, and space. They challenge KinoPulse to connect continuous latent stress
