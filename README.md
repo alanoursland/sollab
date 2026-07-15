@@ -1,14 +1,16 @@
 # KinoPulse Playground
 
 See [DREAMS.md](DREAMS.md) for the long-term vision behind this dynamics
-laboratory.
+laboratory, and [RESEARCH_QUESTIONS.md](RESEARCH_QUESTIONS.md) for a prioritized
+portfolio built around public real-world datasets.
 
 This repository is an experimental field guide to nonlinear dynamics built with
 KinoPulse. The exhibits explore Lorenz chaos, pitchfork bifurcations, LQR
 control, sparse equation discovery, hybrid bouncing-ball dynamics, and heat
 diffusion, parametric resonance, and constrained pendulum dynamics. Together
 they exercise simulation, classification, stability, system identification,
-control synthesis, event detection, state resets, and visualization.
+control synthesis, event detection, state resets, visualization, and real-data
+model discovery from NASA space-weather observations.
 
 ## Run
 
@@ -23,6 +25,8 @@ Use the repository's local environment:
 .\.venv\Scripts\python.exe diffusion_lab.py
 .\.venv\Scripts\python.exe resonance_lab.py
 .\.venv\Scripts\python.exe constraint_lab.py
+.\.venv\Scripts\python.exe fetch_omni.py
+.\.venv\Scripts\python.exe space_weather_lab.py
 ```
 
 Generated files are written to `artifacts/`:
@@ -44,6 +48,8 @@ Generated files are written to `artifacts/`:
 - `resonance_analysis.json` — resonance classification and amplitude growth
 - `constraint_lab.png` — Cartesian pendulum orbit and constraint drift
 - `constraint_analysis.json` — initialization, drift, and energy diagnostics
+- `space_weather_lab.png` — observed and learned geomagnetic-storm response
+- `space_weather_analysis.json` — provenance, coefficients, and held-out errors
 
 Run the regression checks with:
 
