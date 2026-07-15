@@ -35,6 +35,7 @@ Use the repository's local environment:
 .\.venv\Scripts\python.exe fetch_ridgecrest.py
 .\.venv\Scripts\python.exe aftershock_lab.py
 .\.venv\Scripts\python.exe aftershock_excitation_lab.py
+.\.venv\Scripts\python.exe aftershock_spatial_lab.py
 ```
 
 Generated files are written to `artifacts/`:
@@ -66,6 +67,9 @@ with catalog provenance, model comparison, and holdout diagnostics.
 The excitation follow-up writes `aftershock_excitation_lab.png` and
 `aftershock_excitation_analysis.json` with strictly causal conditional scores
 and binning sensitivity.
+The spatial-memory follow-up writes `aftershock_spatial_lab.png` and
+`aftershock_spatial_analysis.json`, including along-strike holdout diagnostics
+and a deliberately preserved overfitting result.
 
 Run the regression checks with:
 
