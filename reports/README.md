@@ -25,6 +25,7 @@ figures are committed for convenient review. Results were last reproduced on
 | [Geomagnetic storm](09_geomagnetic_storm.md) | Can a compact forced model reproduce a real storm? | Held-out rollout RMSE `21.47 nT` versus `45.51 nT` constant baseline. |
 | [TorchScript export](10_torchscript_export.md) | Can a controlled one-step model become a validated standalone artifact? | Genuine script mode, 32 saved-artifact checks, and zero numerical error. |
 | [Release validation](11_release_validation_2026071508.md) | Did the new release close the laboratory findings? | Seven fix areas confirmed; two narrower boundary gaps remain. |
+| [Aftershock relaxation](12_ridgecrest_aftershocks.md) | Does seismic activity remember a large shock through a power law? | A seven-day Omori fit predicts the next 23 days; exponential relaxation collapses too quickly. |
 
 ## Reproduction
 
@@ -40,6 +41,13 @@ The geomagnetic-storm report additionally requires:
 ```powershell
 .\.venv\Scripts\python.exe fetch_omni.py
 .\.venv\Scripts\python.exe space_weather_lab.py
+```
+
+The Ridgecrest report additionally requires:
+
+```powershell
+.\.venv\Scripts\python.exe fetch_ridgecrest.py
+.\.venv\Scripts\python.exe aftershock_lab.py
 ```
 
 These are exploratory numerical experiments, not claims that every computed

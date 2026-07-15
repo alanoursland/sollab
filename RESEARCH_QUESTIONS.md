@@ -175,6 +175,11 @@ substantial NOAA data handling.
 
 ## 7. What dynamical law governs aftershock cascades?
 
+**Status:** The first Ridgecrest experiment is implemented in
+`aftershock_lab.py` and documented in `reports/12_ridgecrest_aftershocks.md`.
+It establishes a power-law relaxation baseline and identifies the time bins
+where a richer self-exciting or hybrid event model has the most to explain.
+
 **Why I want this:** Earthquakes are events interacting across time, magnitude,
 depth, and space. They challenge KinoPulse to connect continuous latent stress
 with discrete point events rather than forcing everything into a smooth state
