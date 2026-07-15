@@ -44,6 +44,7 @@ Use the repository's local environment:
 .\.venv\Scripts\python.exe aftershock_population_hierarchy_lab.py
 .\.venv\Scripts\python.exe aftershock_count_guard_lab.py
 .\.venv\Scripts\python.exe change_detector_lab.py
+.\.venv\Scripts\python.exe sequential_regime_lab.py
 ```
 
 Generated files are written to `artifacts/`:
@@ -94,6 +95,9 @@ rejection of unsafe metadata corrections.
 The change-detector audit writes `change_detector_lab.png` and
 `change_detector_analysis.json`, combining controlled contract probes with
 causal held-out forecast-residual streams.
+The calibrated sequential-monitor follow-up writes `sequential_regime_lab.png`
+and `sequential_regime_analysis.json`, with target-specific null calibration,
+change-direction estimates, and independent false-alarm validation.
 
 Run the regression checks with:
 
