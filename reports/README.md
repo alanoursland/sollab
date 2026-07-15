@@ -32,6 +32,7 @@ figures are committed for convenient review. Results were last reproduced on
 | [Hierarchical aftershock transfer](16_hierarchical_aftershock_transfer.md) | When should a new sequence escape the population shape? | Partial pooling cuts summed deviance `74.1%` and its 80% totals cover `7 / 8` sequences. |
 | [Aftershock meta-prediction](17_aftershock_population_meta_prediction.md) | Can mainshock metadata and the first day predict a sequence's decay personality? | Model-blind screening retains 12 sequences, but conditioned point estimates worsen held-out count forecasts. |
 | [Expanded hierarchy and count guard](18_expanded_aftershock_hierarchy_and_count_guard.md) | Does partial pooling survive expansion, and can unsafe metadata be rejected? | Partial pooling wins `7 / 12`; count-space validation rejects metadata in every fold and preserves the stronger model. |
+| [Change-detector audit](19_change_detector_contract_audit.md) | Can online residual monitoring detect when the hierarchy enters a new regime? | Synthetic probes expose dead configurations, repeated alarms, and stale reset state; real alarms are not yet specific enough. |
 
 ## Reproduction
 
@@ -63,6 +64,7 @@ The Ridgecrest report additionally requires:
 .\.venv\Scripts\python.exe aftershock_meta_lab.py
 .\.venv\Scripts\python.exe aftershock_population_hierarchy_lab.py
 .\.venv\Scripts\python.exe aftershock_count_guard_lab.py
+.\.venv\Scripts\python.exe change_detector_lab.py
 ```
 
 These are exploratory numerical experiments, not claims that every computed

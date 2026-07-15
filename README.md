@@ -43,6 +43,7 @@ Use the repository's local environment:
 .\.venv\Scripts\python.exe aftershock_meta_lab.py
 .\.venv\Scripts\python.exe aftershock_population_hierarchy_lab.py
 .\.venv\Scripts\python.exe aftershock_count_guard_lab.py
+.\.venv\Scripts\python.exe change_detector_lab.py
 ```
 
 Generated files are written to `artifacts/`:
@@ -90,6 +91,9 @@ The expanded hierarchy and count-space guard write
 `aftershock_population_hierarchy.png` and `aftershock_count_guard.png`, with
 nested validation evidence showing both successful adaptation and explicit
 rejection of unsafe metadata corrections.
+The change-detector audit writes `change_detector_lab.png` and
+`change_detector_analysis.json`, combining controlled contract probes with
+causal held-out forecast-residual streams.
 
 Run the regression checks with:
 
