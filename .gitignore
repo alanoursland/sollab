@@ -2,6 +2,6 @@
 AGENTS.md
 __pycache__/
 *.py[cod]
-artifacts/
+artifacts/*.json
 data/
 kinopulse_gaps/
