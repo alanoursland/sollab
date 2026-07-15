@@ -5,6 +5,10 @@ scientific software studies. They describe the question, model, KinoPulse
 capabilities exercised, numerical procedure, evidence, limitations, and
 release-under-test observations for each lab.
 
+For a practitioner-oriented path through reports 12–22, including data
+contracts, reproduction tiers, interpretation, and safety boundaries, see the
+[earthquake and aftershock research guide](../EARTHQUAKE_README.md).
+
 All reported values come from the JSON evidence generated locally in
 `artifacts/`. The JSON and downloaded source data are intentionally ignored;
 figures are committed for convenient review. Results were last reproduced on

@@ -7,6 +7,11 @@ portfolio built around public real-world datasets.
 Detailed methods, results, limitations, and reproduction instructions are in
 the [experiment reports](reports/README.md).
 
+Seismologists and earthquake-forecast practitioners should start with the
+[earthquake and aftershock research guide](EARTHQUAKE_README.md). It separates
+the retrospective models, reusable forecast monitor, reproduction paths, and
+public-safety boundaries.
+
 This repository is an experimental field guide to nonlinear dynamics built with
 KinoPulse. The exhibits explore Lorenz chaos, pitchfork bifurcations, LQR
 control, sparse equation discovery, hybrid bouncing-ball dynamics, and heat

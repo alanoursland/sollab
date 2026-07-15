@@ -1,5 +1,9 @@
 # Sequential Poisson Regime Monitor
 
+For the surrounding earthquake research, data assumptions, validation history,
+and practitioner workflow, begin with the
+[earthquake and aftershock research guide](../EARTHQUAKE_README.md).
+
 ## What this artifact is
 
 `sequential_poisson_regime_monitor.pt` is a portable TorchScript kernel for
