@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import json
-import math
 from pathlib import Path
 
 import matplotlib
@@ -16,78 +15,19 @@ from aftershock_hierarchy_lab import fit_hierarchical_target, robust_population
 from aftershock_lab import DTYPE, fit_relaxation_model
 from aftershock_meta_lab import load_population_manifest
 from aftershock_transfer_lab import CALIBRATION_END_DAYS, load_sequence, make_transfer_bins
+from poisson_regime_monitor import (
+    DEFAULT_MIN_POSTCHANGE_BINS,
+    DEFAULT_MIN_PRECHANGE_BINS,
+    monte_carlo_threshold,
+    tail_scale_scan,
+)
 
 
-MIN_PRECHANGE_BINS = 3
-MIN_POSTCHANGE_BINS = 3
+MIN_PRECHANGE_BINS = DEFAULT_MIN_PRECHANGE_BINS
+MIN_POSTCHANGE_BINS = DEFAULT_MIN_POSTCHANGE_BINS
 FALSE_ALARM_RATE = 0.01
 CALIBRATION_SAMPLES = 8192
 VALIDATION_SAMPLES = 4096
-
-
-def tail_scale_scan(
-    counts: torch.Tensor,
-    expected: torch.Tensor,
-    min_prechange: int = MIN_PRECHANGE_BINS,
-    min_postchange: int = MIN_POSTCHANGE_BINS,
-) -> tuple[torch.Tensor, torch.Tensor]:
-    """Sequential GLR for an unknown persistent multiplicative tail change."""
-    squeeze = counts.ndim == 1
-    if squeeze:
-        counts = counts[None, :]
-    if counts.ndim != 2 or expected.ndim != 1:
-        raise ValueError("counts must be [samples, bins] and expected must be [bins]")
-    if counts.shape[1] != len(expected):
-        raise ValueError("counts and expected must contain the same number of bins")
-    batch, bin_count = counts.shape
-    cumulative_counts = torch.cat(
-        (torch.zeros((batch, 1), dtype=counts.dtype), counts.cumsum(dim=1)),
-        dim=1,
-    )
-    cumulative_expected = torch.cat(
-        (torch.zeros(1, dtype=expected.dtype), expected.cumsum(dim=0))
-    )
-    statistics = torch.zeros_like(counts)
-    split_indices = torch.full(
-        counts.shape, -1, dtype=torch.long, device=counts.device
-    )
-    for end in range(min_prechange + min_postchange, bin_count + 1):
-        candidates = []
-        for split in range(min_prechange, end - min_postchange + 1):
-            tail_count = cumulative_counts[:, end] - cumulative_counts[:, split]
-            tail_expected = cumulative_expected[end] - cumulative_expected[split]
-            log_term = torch.where(
-                tail_count > 0,
-                tail_count * torch.log(tail_count / tail_expected),
-                torch.zeros_like(tail_count),
-            )
-            candidates.append(
-                2.0 * (log_term - (tail_count - tail_expected))
-            )
-        candidate_statistics = torch.stack(candidates, dim=1)
-        statistics[:, end - 1], best = candidate_statistics.max(dim=1)
-        split_indices[:, end - 1] = best + min_prechange
-    if squeeze:
-        return statistics[0], split_indices[0]
-    return statistics, split_indices
-
-
-def monte_carlo_threshold(
-    expected: torch.Tensor,
-    false_alarm_rate: float,
-    sample_count: int,
-    generator: torch.Generator,
-) -> tuple[float, torch.Tensor]:
-    if not 0.0 < false_alarm_rate < 1.0:
-        raise ValueError("false_alarm_rate must be strictly between zero and one")
-    simulated = torch.poisson(
-        expected.expand(sample_count, -1), generator=generator
-    )
-    statistics, _ = tail_scale_scan(simulated, expected)
-    maxima = statistics.max(dim=1).values.sort().values
-    rank = math.ceil((sample_count + 1) * (1.0 - false_alarm_rate)) - 1
-    rank = max(0, min(sample_count - 1, rank))
-    return float(maxima[rank]), maxima
 
 
 def main(

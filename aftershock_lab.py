@@ -16,7 +16,11 @@ import torch
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-from kinopulse.identification.parametric import LevenbergMarquardt
+from kinopulse.identification.counts import (
+    anscombe_residual as kinopulse_anscombe_residual,
+    poisson_deviance as kinopulse_poisson_deviance,
+)
+from kinopulse.identification.parametric import multistart_least_squares
 from kinopulse.solvers import solve_ivp
 
 from fetch_ridgecrest import source_url
@@ -168,9 +172,12 @@ def exponential_expected_counts(
 
 
 def anscombe_residual(expected: torch.Tensor, observed: torch.Tensor) -> torch.Tensor:
-    return 2.0 * (
-        torch.sqrt(expected.clamp_min(1e-12) + 3.0 / 8.0)
-        - torch.sqrt(observed + 3.0 / 8.0)
+    """Compatibility orientation for the playground's pre-release residual."""
+    return -kinopulse_anscombe_residual(
+        expected,
+        observed,
+        eps=1e-12,
+        reduction="none",
     )
 
 
@@ -217,20 +224,17 @@ def fit_relaxation_model(
             expected_fn(theta, edges, background)[train_mask], observed[train_mask]
         )
 
-    candidates = []
-    for initial in initial_thetas:
-        optimizer = LevenbergMarquardt(residual, initial)
-        try:
-            theta = optimizer.optimize(max_iter=100, tolerance=1e-9)
-            objective = float(torch.sum(residual(theta).square()))
-        except (RuntimeError, ValueError):
-            continue
-        if math.isfinite(objective):
-            candidates.append((objective, theta, len(optimizer.history)))
-    if not candidates:
+    multistart = multistart_least_squares(
+        residual,
+        initial_thetas,
+        max_iter=100,
+        tolerance=1e-9,
+        failure_policy="record",
+    )
+    best = multistart.best.result
+    if best is None:  # The result contract makes this unreachable for best.
         raise RuntimeError(f"All KinoPulse fits failed for {name}")
-
-    objective, theta, iterations = min(candidates, key=lambda item: item[0])
+    objective, theta, iterations = best.objective, best.parameters, best.iterations
     if name == "omori":
         values = decode_omori(theta)
         parameters = dict(zip(("productivity", "c_days", "p"), map(float, values)))
@@ -248,13 +252,14 @@ def fit_relaxation_model(
 
 
 def poisson_deviance(expected: torch.Tensor, observed: torch.Tensor) -> float:
-    expected = expected.clamp_min(1e-12)
-    log_term = torch.where(
-        observed > 0,
-        observed * torch.log(observed.clamp_min(1e-12) / expected),
-        torch.zeros_like(observed),
+    return float(
+        kinopulse_poisson_deviance(
+            expected,
+            observed,
+            eps=1e-12,
+            reduction="sum",
+        )
     )
-    return float((2.0 * (expected - observed + log_term)).sum())
 
 
 def integrate_omori(

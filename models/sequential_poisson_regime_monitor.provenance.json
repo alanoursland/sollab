@@ -1,0 +1,34 @@
+{
+  "artifact": "sequential_poisson_regime_monitor.pt",
+  "purpose": "monitor persistent multiplicative departures from a supplied Poisson count forecast",
+  "not_a_forecast": true,
+  "contains_trained_earthquake_parameters": false,
+  "kinopulse_version": "0.1.0.dev2026071508",
+  "torch_version": "2.3.0",
+  "requested_mode": "script",
+  "actual_mode": "script",
+  "fallback_status": "none",
+  "fallback_reason": null,
+  "validated_saved_artifact": true,
+  "validation_passed": true,
+  "validation_cases": 32,
+  "validation_max_error": 0.0,
+  "artifact_bytes": 5983,
+  "artifact_sha256": "e02315d4ccafb9ae8f8cc40e0ebc842a66bd4a76ef8d8d88dd600560f84c82be",
+  "source": "poisson_regime_monitor.py",
+  "source_sha256": "46d644b0ce13f051fbbe28668ee2785efae8c651bb2f8a5b401315ef0b9261fb",
+  "min_prechange_bins": 3,
+  "min_postchange_bins": 3,
+  "input_contract": [
+    "observed: one-dimensional non-negative floating count prefix",
+    "expected: same-length strictly-positive floating expected-count prefix",
+    "threshold: one finite positive floating value calibrated for the complete monitoring procedure"
+  ],
+  "output_contract": [
+    "statistic: current maximum tail-rate twice-log-likelihood ratio",
+    "split_index: estimated zero-based change bin, or -1 before readiness",
+    "rate_multiplier: observed/expected tail rate",
+    "direction: -1 lower, 0 not ready/equal, +1 higher",
+    "alarm: integer 0/1 indicating whether statistic exceeds supplied threshold"
+  ]
+}

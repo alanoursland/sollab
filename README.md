@@ -45,6 +45,8 @@ Use the repository's local environment:
 .\.venv\Scripts\python.exe aftershock_count_guard_lab.py
 .\.venv\Scripts\python.exe change_detector_lab.py
 .\.venv\Scripts\python.exe sequential_regime_lab.py
+.\.venv\Scripts\python.exe export_sequential_monitor.py
+.\.venv\Scripts\python.exe kinopulse_release_lab.py
 ```
 
 Generated files are written to `artifacts/`:
@@ -98,6 +100,23 @@ causal held-out forecast-residual streams.
 The calibrated sequential-monitor follow-up writes `sequential_regime_lab.png`
 and `sequential_regime_analysis.json`, with target-specific null calibration,
 change-direction estimates, and independent false-alarm validation.
+The release-validation lab writes `kinopulse_2026071512_validation.json`, with
+analytical count, point-process, fitting, residual-accounting, and covariance
+oracles for the installed KinoPulse wheel.
+
+## Portable research monitor
+
+The reusable forecast-monitoring kernel is committed in `models/`:
+
+- `sequential_poisson_regime_monitor.pt` — genuine strict-script TorchScript;
+- `sequential_poisson_regime_monitor.provenance.json` — SHA-256, versions,
+  validation, and machine-readable contracts; and
+- `sequential_poisson_regime_monitor.md` — model card, safety boundary, and use.
+
+It contains no trained earthquake parameters and is not an earthquake forecast
+or public-safety alarm. Researchers must supply their own forecast and
+scientifically calibrated threshold. The repository currently has no license
+file; the owner should select one before external reuse is invited.
 
 Run the regression checks with:
 

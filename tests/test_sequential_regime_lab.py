@@ -4,7 +4,7 @@ import unittest
 import torch
 
 from aftershock_lab import DTYPE
-from sequential_regime_lab import monte_carlo_threshold, tail_scale_scan
+from poisson_regime_monitor import monte_carlo_threshold, tail_scale_scan
 
 
 class SequentialRegimeLabTests(unittest.TestCase):
