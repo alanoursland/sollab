@@ -40,6 +40,7 @@ figures are committed for convenient review. Results were last reproduced on
 | [Calibrated sequential monitor](20_calibrated_sequential_regime_monitor.md) | Can a forecast admit early that it has entered a sustained higher/lower-rate regime? | A 1%-calibrated scan detects all three predictive-total misses by day 5.48 and validates at `0.972%` null alarms. |
 | [Portable monitor export](21_portable_sequential_monitor_export.md) | What should be exported for researchers without overstating the earthquake model? | A generic 5,983-byte strict TorchScript monitor passes 32 saved-artifact cases exactly and contains no trained seismic parameters. |
 | [Release validation](22_release_validation_2026071512.md) | Do the new count, fit, and point-process contracts survive analytical oracles? | Count and fit APIs pass and now power the aftershock lab; a causal left-boundary bug remains in history-dependent compensators. |
+| [External aftershock validation](23_external_aftershock_validation.md) | Does the frozen western hierarchy survive outside its home region? | Point forecasts improve across 37 Alaska-sector sequences, but nominal 80% predictive totals cover only 51.4%. |
 
 ## Reproduction
 
@@ -75,6 +76,8 @@ The Ridgecrest report additionally requires:
 .\.venv\Scripts\python.exe sequential_regime_lab.py
 .\.venv\Scripts\python.exe export_sequential_monitor.py
 .\.venv\Scripts\python.exe kinopulse_release_lab.py
+.\.venv\Scripts\python.exe fetch_external_aftershock_population.py
+.\.venv\Scripts\python.exe external_aftershock_lab.py
 ```
 
 These are exploratory numerical experiments, not claims that every computed

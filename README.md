@@ -52,6 +52,8 @@ Use the repository's local environment:
 .\.venv\Scripts\python.exe sequential_regime_lab.py
 .\.venv\Scripts\python.exe export_sequential_monitor.py
 .\.venv\Scripts\python.exe kinopulse_release_lab.py
+.\.venv\Scripts\python.exe fetch_external_aftershock_population.py
+.\.venv\Scripts\python.exe external_aftershock_lab.py
 ```
 
 Generated files are written to `artifacts/`:
@@ -108,6 +110,9 @@ change-direction estimates, and independent false-alarm validation.
 The release-validation lab writes `kinopulse_2026071512_validation.json`, with
 analytical count, point-process, fitting, residual-accounting, and covariance
 oracles for the installed KinoPulse wheel.
+The external-validation lab writes `external_aftershock_validation.png` and
+`external_aftershock_validation.json`, preserving the failed 2026 temporal
+screen and the frozen 37-sequence Alaska/Gulf geographic test.
 
 ## Portable research monitor
 

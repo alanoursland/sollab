@@ -167,6 +167,23 @@ distinguish secondary rupture, a new decay exponent, catalog outage,
 completeness change, or other causes, and it is not a damaging-earthquake
 prediction.
 
+### 6. Point adaptation transfers geographically; uncertainty does not
+
+The frozen western hierarchy was evaluated on 37 Alaska/Gulf-sector sequences
+without allowing any external target to change its population or pooling
+strength. It wins `19 / 37` sequences and reduces summed deviance `43.2%`
+relative to the robust fixed population shape. This is the strongest evidence
+so far that the partial-pooling mechanism is not peculiar to the original 12
+earthquakes.
+
+Its nominal central 80% predictive totals cover only `19 / 37` targets
+(`51.4%`). Thirteen misses fall below the lower bound and five above the upper
+bound, indicating that the western uncertainty distribution is often too
+persistent for the external cohort. The model transfers as a point-forecast
+baseline, not as a calibrated predictive distribution. The intended 2026
+temporal screen produced one candidate but no eligible sequence, so this is
+geographic—not prospective—validation.
+
 ## Relationship to established forecasting practice
 
 This project does not claim state-of-the-art aftershock forecasting. It has not
@@ -199,6 +216,7 @@ The reports are cumulative; each one preserves its own evidence boundary.
 | [20 — Calibrated sequential monitor](reports/20_calibrated_sequential_regime_monitor.md) | Can sustained forecast failure be detected causally? | Yes under an explicit fixed-Poisson null. |
 | [21 — Portable export](reports/21_portable_sequential_monitor_export.md) | What is responsible to publish? | The generic monitor, not a trained earthquake oracle. |
 | [22 — KinoPulse release validation](reports/22_release_validation_2026071512.md) | Are the new count and point-process APIs analytically sound? | Count/fitting paths pass; history-dependent compensators have a boundary bug. |
+| [23 — External aftershock validation](reports/23_external_aftershock_validation.md) | Does the frozen hierarchy survive outside western North America? | Point scores transfer across 37 Alaska-sector targets; predictive coverage does not. |
 
 For a short scientific reading path, use reports 12, 18, 20, 21, and 22. Read
 reports 13, 14, 17, and 19 before proposing extra model complexity; they record
@@ -257,6 +275,20 @@ partial pooling easier to understand before moving to the expanded screen.
 .\.venv\Scripts\python.exe change_detector_lab.py
 .\.venv\Scripts\python.exe sequential_regime_lab.py
 ```
+
+### External geographic validation
+
+```powershell
+.\.venv\Scripts\python.exe fetch_external_aftershock_population.py
+.\.venv\Scripts\python.exe external_aftershock_lab.py
+.\.venv\Scripts\python.exe -m unittest tests.test_fetch_external_aftershock_population tests.test_external_aftershock_lab -v
+```
+
+This first screens the temporally unseen 2026 western cohort without relaxing
+the rules, then runs the separately labelled Alaska/Gulf geographic fallback.
+The frozen model is trained only from `data/aftershock_population`; external
+targets contribute day-one calibration counts but never update its population
+or pooling-strength selection.
 
 Run the complete regression suite afterward:
 
@@ -339,7 +371,9 @@ screen, or monitor threshold without re-establishing them for the new setting.
 - The spatial and excitation labs are research counterexamples, not validated
   modules to compose into a larger model.
 - No prospective or blind external earthquake population has yet evaluated
-  the complete hierarchy-plus-monitor workflow.
+  the complete hierarchy-plus-monitor workflow. The hierarchy alone has a
+  retrospective geographic external test; its predictive undercoverage is a
+  current failure, not a deployment-ready result.
 
 ## A responsible next study
 
