@@ -38,6 +38,7 @@ Use the repository's local environment:
 .\.venv\Scripts\python.exe aftershock_spatial_lab.py
 .\.venv\Scripts\python.exe fetch_aftershock_benchmark.py
 .\.venv\Scripts\python.exe aftershock_transfer_lab.py
+.\.venv\Scripts\python.exe aftershock_hierarchy_lab.py
 ```
 
 Generated files are written to `artifacts/`:
@@ -75,6 +76,9 @@ and a deliberately preserved overfitting result.
 The transfer benchmark writes `aftershock_transfer_lab.png` and
 `aftershock_transfer_analysis.json`, with eight leave-one-sequence-out folds
 and complete USGS query provenance.
+The hierarchical follow-up writes `aftershock_hierarchy_lab.png` and
+`aftershock_hierarchy_analysis.json`, with nested pooling selection and
+population predictive intervals.
 
 Run the regression checks with:
 

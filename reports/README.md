@@ -29,6 +29,7 @@ figures are committed for convenient review. Results were last reproduced on
 | [Aftershock excitation](13_aftershock_excitation.md) | Do observed events improve the next conditional interval? | A magnitude-weighted kernel lowers holdout deviance by only `2.12%` and does not win most intervals. |
 | [Aftershock spatial memory](14_aftershock_spatial_memory.md) | Can causal regional activity predict where the next event occurs? | A plausible latent state cuts training spatial deviance `16.1%` but worsens holdout by `3.1%`. |
 | [Aftershock law transfer](15_aftershock_law_transfer.md) | Does one relaxation shape transfer to an unseen earthquake? | Transferred Omori wins `5 / 8` sequences but fails oppositely on El Mayor and Ridgecrest. |
+| [Hierarchical aftershock transfer](16_hierarchical_aftershock_transfer.md) | When should a new sequence escape the population shape? | Partial pooling cuts summed deviance `74.1%` and its 80% totals cover `7 / 8` sequences. |
 
 ## Reproduction
 
@@ -55,6 +56,7 @@ The Ridgecrest report additionally requires:
 .\.venv\Scripts\python.exe aftershock_spatial_lab.py
 .\.venv\Scripts\python.exe fetch_aftershock_benchmark.py
 .\.venv\Scripts\python.exe aftershock_transfer_lab.py
+.\.venv\Scripts\python.exe aftershock_hierarchy_lab.py
 ```
 
 These are exploratory numerical experiments, not claims that every computed

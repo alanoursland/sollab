@@ -176,11 +176,11 @@ substantial NOAA data handling.
 ## 7. What dynamical law governs aftershock cascades?
 
 **Status:** Four aftershock experiments are documented in reports 12 through
-15. The first three establish the Ridgecrest baseline and expose temporal and
-spatial overfitting. The fourth adds eight whole-sequence USGS folds: a shared
-Omori law regularizes small catalogs and wins five folds, but fails oppositely
-on El Mayor and Ridgecrest. A hierarchical, uncertainty-aware population model
-is now the important test.
+16. The first three establish the Ridgecrest baseline and expose temporal and
+spatial overfitting. The fourth adds eight whole-sequence USGS folds. The fifth
+uses nested robust partial pooling, cutting summed deviance by `74.1%` versus a
+shared shape while covering seven of eight totals. Predicting which physical
+covariates drive population escape is now the important test.
 
 **Why I want this:** Earthquakes are events interacting across time, magnitude,
 depth, and space. They challenge KinoPulse to connect continuous latent stress
