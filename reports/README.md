@@ -41,6 +41,9 @@ figures are committed for convenient review. Results were last reproduced on
 | [Portable monitor export](21_portable_sequential_monitor_export.md) | What should be exported for researchers without overstating the earthquake model? | A generic 5,983-byte strict TorchScript monitor passes 32 saved-artifact cases exactly and contains no trained seismic parameters. |
 | [Release validation](22_release_validation_2026071512.md) | Do the new count, fit, and point-process contracts survive analytical oracles? | Count and fit APIs pass and now power the aftershock lab; a causal left-boundary bug remains in history-dependent compensators. |
 | [External aftershock validation](23_external_aftershock_validation.md) | Does the frozen western hierarchy survive outside its home region? | Point forecasts improve across 37 Alaska-sector sequences, but nominal 80% predictive totals cover only 51.4%. |
+| [Chronological uncertainty recalibration](24_chronological_uncertainty_recalibration.md) | Can earlier Alaska outcomes repair later predictive coverage? | Asymmetric expansion raises 2020–2025 coverage from 28.6% to 71.4%, still below target at 83% greater median width. |
+| [Prequential uncertainty calibration](25_prequential_uncertainty_calibration.md) | Can completed external outcomes repair the next interval online? | Rolling calibration reaches 80% overall coverage by allowing later median width to grow to 8.73×. |
+| [Causal abstention audit](26_causal_abstention_audit.md) | Can target-time warning signals identify which external intervals should not be issued? | Consensus and width gates reject covered forecasts while retaining every miss; the simple abstention signals fail. |
 
 ## Reproduction
 
@@ -78,6 +81,9 @@ The Ridgecrest report additionally requires:
 .\.venv\Scripts\python.exe kinopulse_release_lab.py
 .\.venv\Scripts\python.exe fetch_external_aftershock_population.py
 .\.venv\Scripts\python.exe external_aftershock_lab.py
+.\.venv\Scripts\python.exe external_uncertainty_lab.py
+.\.venv\Scripts\python.exe online_uncertainty_lab.py
+.\.venv\Scripts\python.exe abstention_audit_lab.py
 ```
 
 These are exploratory numerical experiments, not claims that every computed

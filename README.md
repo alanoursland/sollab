@@ -54,6 +54,9 @@ Use the repository's local environment:
 .\.venv\Scripts\python.exe kinopulse_release_lab.py
 .\.venv\Scripts\python.exe fetch_external_aftershock_population.py
 .\.venv\Scripts\python.exe external_aftershock_lab.py
+.\.venv\Scripts\python.exe external_uncertainty_lab.py
+.\.venv\Scripts\python.exe online_uncertainty_lab.py
+.\.venv\Scripts\python.exe abstention_audit_lab.py
 ```
 
 Generated files are written to `artifacts/`:
@@ -113,6 +116,16 @@ oracles for the installed KinoPulse wheel.
 The external-validation lab writes `external_aftershock_validation.png` and
 `external_aftershock_validation.json`, preserving the failed 2026 temporal
 screen and the frozen 37-sequence Alaska/Gulf geographic test.
+The chronological uncertainty follow-up writes
+`external_uncertainty_recalibration.png` and
+`external_uncertainty_recalibration.json`, measuring whether pre-2020
+external-domain interval corrections survive from 2020 through 2025.
+The prequential uncertainty lab writes `online_uncertainty_calibration.png` and
+`online_uncertainty_calibration.json`, replaying expanding and rolling grouped
+calibration with a 30-day outcome-maturity embargo.
+The abstention audit writes `abstention_audit.png` and `abstention_audit.json`,
+testing whether causal feature novelty, forecast disagreement, or interval
+width can identify unsafe external predictions before their outcomes arrive.
 
 ## Portable research monitor
 

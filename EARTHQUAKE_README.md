@@ -184,6 +184,46 @@ baseline, not as a calibrated predictive distribution. The intended 2026
 temporal screen produced one candidate but no eligible sequence, so this is
 geographic—not prospective—validation.
 
+### 7. Historical interval expansion helps, but drift remains
+
+A chronological follow-up calibrates predictive intervals on 23 pre-2020
+Alaska-sector sequences, then freezes the correction for 14 sequences from
+2020–2025. Raw later coverage is only `4 / 14`. A conservative asymmetric
+split-conformal expansion raises it to `10 / 14` (`71.4%`) but increases median
+multiplicative width from `2.01×` to `3.68×` and still misses the 80% target.
+
+This is evidence that the uncertainty problem is not one stationary scale
+factor. The group-level exchangeability assumption degrades over time or
+across subdomains. A practitioner should not treat the recalibrated interval as
+certified; the next uncertainty model needs explicit domain and catalog state.
+
+### 8. Online coverage can be bought with nearly uninformative width
+
+A strictly prequential replay waits until each prior earthquake's 30-day
+outcome is complete before using it for calibration. A rolling 12-sequence
+correction reaches `20 / 25` overall coverage and `11 / 14` from 2020 onward,
+but later median interval width expands to `8.73×`. An expanding-history method
+is sharper at `3.77×` and covers `10 / 14` later targets.
+
+The rolling method reacts correctly to recent misses, but coverage is achieved
+mostly by memorizing extremes and widening dramatically. This is not a
+deployment success. It motivates an abstention or explicit unknown-domain state
+rather than an automatic claim that the forecast has been calibrated.
+
+### 9. Abstention needs its own validated failure signal
+
+A causal audit tests feature novelty, disagreement among the three existing
+count forecasts, and a `5x` interval-width cap as possible day-one abstention
+rules. None reliably identifies the five misses. Model consensus rejects four
+covered forecasts and no misses. The width cap is worse: it rejects 12 covered
+forecasts and no misses, leaving only `8 / 13` coverage.
+
+The wide intervals are the calibrator's successful response to past extremes,
+not evidence that those particular targets will fail. An unknown-domain state
+therefore needs mechanism-linked catalog, rupture, spatial, or evolving
+residual evidence. Merely hiding wide or disagreeing forecasts can make the
+issued subset less reliable.
+
 ## Relationship to established forecasting practice
 
 This project does not claim state-of-the-art aftershock forecasting. It has not
@@ -217,6 +257,9 @@ The reports are cumulative; each one preserves its own evidence boundary.
 | [21 — Portable export](reports/21_portable_sequential_monitor_export.md) | What is responsible to publish? | The generic monitor, not a trained earthquake oracle. |
 | [22 — KinoPulse release validation](reports/22_release_validation_2026071512.md) | Are the new count and point-process APIs analytically sound? | Count/fitting paths pass; history-dependent compensators have a boundary bug. |
 | [23 — External aftershock validation](reports/23_external_aftershock_validation.md) | Does the frozen hierarchy survive outside western North America? | Point scores transfer across 37 Alaska-sector targets; predictive coverage does not. |
+| [24 — Chronological uncertainty recalibration](reports/24_chronological_uncertainty_recalibration.md) | Can pre-2020 external outcomes calibrate 2020–2025 uncertainty? | Coverage improves substantially but remains below target with much wider intervals. |
+| [25 — Prequential uncertainty calibration](reports/25_prequential_uncertainty_calibration.md) | Can matured outcomes update the next interval online? | Nominal aggregate coverage is attainable only with severe loss of sharpness. |
+| [26 — Causal abstention audit](reports/26_causal_abstention_audit.md) | Can day-one warning signals identify unsafe intervals? | Simple support, consensus, and width gates reject successes without reliably catching failures. |
 
 For a short scientific reading path, use reports 12, 18, 20, 21, and 22. Read
 reports 13, 14, 17, and 19 before proposing extra model complexity; they record
@@ -281,7 +324,10 @@ partial pooling easier to understand before moving to the expanded screen.
 ```powershell
 .\.venv\Scripts\python.exe fetch_external_aftershock_population.py
 .\.venv\Scripts\python.exe external_aftershock_lab.py
-.\.venv\Scripts\python.exe -m unittest tests.test_fetch_external_aftershock_population tests.test_external_aftershock_lab -v
+.\.venv\Scripts\python.exe external_uncertainty_lab.py
+.\.venv\Scripts\python.exe online_uncertainty_lab.py
+.\.venv\Scripts\python.exe abstention_audit_lab.py
+.\.venv\Scripts\python.exe -m unittest tests.test_fetch_external_aftershock_population tests.test_external_aftershock_lab tests.test_external_uncertainty_lab tests.test_online_uncertainty_lab tests.test_abstention_audit_lab -v
 ```
 
 This first screens the temporally unseen 2026 western cohort without relaxing
