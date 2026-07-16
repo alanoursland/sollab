@@ -45,6 +45,7 @@ figures are committed for convenient review. Results were last reproduced on
 | [Prequential uncertainty calibration](25_prequential_uncertainty_calibration.md) | Can completed external outcomes repair the next interval online? | Rolling calibration reaches 80% overall coverage by allowing later median width to grow to 8.73×. |
 | [Causal abstention audit](26_causal_abstention_audit.md) | Can target-time warning signals identify which external intervals should not be issued? | Consensus and width gates reject covered forecasts while retaining every miss; the simple abstention signals fail. |
 | [External sequential-monitor audit](27_external_sequential_monitor_audit.md) | Does the 1%-calibrated monitor retain its interpretation on external earthquakes? | Its fixed null validates internally, but 64.9% of real external sequences alarm; the null is too narrow. |
+| [Hierarchy-predictive sequential monitor](28_hierarchy_predictive_sequential_monitor.md) | Can a predictive rather than point-Poisson null repair the external alarm flood? | External alarms fall from 24 to four, all raw misses, at a large cost in threshold and detection delay. |
 
 ## Reproduction
 
@@ -86,6 +87,7 @@ The Ridgecrest report additionally requires:
 .\.venv\Scripts\python.exe online_uncertainty_lab.py
 .\.venv\Scripts\python.exe abstention_audit_lab.py
 .\.venv\Scripts\python.exe external_sequential_monitor_lab.py
+.\.venv\Scripts\python.exe predictive_sequential_monitor_lab.py
 ```
 
 These are exploratory numerical experiments, not claims that every computed

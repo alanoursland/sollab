@@ -58,6 +58,7 @@ Use the repository's local environment:
 .\.venv\Scripts\python.exe online_uncertainty_lab.py
 .\.venv\Scripts\python.exe abstention_audit_lab.py
 .\.venv\Scripts\python.exe external_sequential_monitor_lab.py
+.\.venv\Scripts\python.exe predictive_sequential_monitor_lab.py
 ```
 
 Generated files are written to `artifacts/`:
@@ -131,6 +132,10 @@ The external sequential-monitor audit writes `external_sequential_monitor.png`
 and `external_sequential_monitor.json`, contrasting internally valid 1%
 fixed-Poisson calibration with the much broader variation in real external
 sequences.
+The predictive sequential-monitor follow-up writes
+`predictive_sequential_monitor.png` and `predictive_sequential_monitor.json`,
+propagating first-day-conditioned population-shape uncertainty into complete
+null paths before calibrating the same scan statistic.
 
 ## Portable research monitor
 

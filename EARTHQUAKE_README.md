@@ -238,6 +238,19 @@ rolling total intervals will miss: alarm precision and miss prevalence are
 both 20%. Operational false-alarm language requires a predictive null that
 propagates model, process, and observation uncertainty.
 
+### 11. A predictive null produces rare but late alarms
+
+The next experiment calibrates the same scan with complete future paths drawn
+from first-day-conditioned western population shapes. External alarms fall
+from 24 to four, and all four are raw interval misses. Median threshold rises
+`8.46x`, raw-miss sensitivity falls to `22.2%`, and median alarm time moves to
+day `13.99`.
+
+Among the 25 rolling-calibrated targets, three alarm: two interval misses and
+one covered trajectory. The quiet subset covers `19 / 22` (`86.4%`). This is a
+promising selective signal, but it rests on only three eligible alarms and was
+developed after observing the fixed-null failure. It needs a new cohort.
+
 ## Relationship to established forecasting practice
 
 This project does not claim state-of-the-art aftershock forecasting. It has not
@@ -275,6 +288,7 @@ The reports are cumulative; each one preserves its own evidence boundary.
 | [25 — Prequential uncertainty calibration](reports/25_prequential_uncertainty_calibration.md) | Can matured outcomes update the next interval online? | Nominal aggregate coverage is attainable only with severe loss of sharpness. |
 | [26 — Causal abstention audit](reports/26_causal_abstention_audit.md) | Can day-one warning signals identify unsafe intervals? | Simple support, consensus, and width gates reject successes without reliably catching failures. |
 | [27 — External sequential-monitor audit](reports/27_external_sequential_monitor_audit.md) | Does fixed-Poisson alarm calibration transfer? | Simulation calibration survives, but its narrow null makes 64.9% of real external sequences alarm. |
+| [28 — Hierarchy-predictive monitor](reports/28_hierarchy_predictive_sequential_monitor.md) | Can known forecast uncertainty repair the alarm null? | Alarms become rare and precise against raw misses, but sensitivity and timeliness collapse. |
 
 For a short scientific reading path, use reports 12, 18, 20, 21, and 22. Read
 reports 13, 14, 17, and 19 before proposing extra model complexity; they record
@@ -343,7 +357,8 @@ partial pooling easier to understand before moving to the expanded screen.
 .\.venv\Scripts\python.exe online_uncertainty_lab.py
 .\.venv\Scripts\python.exe abstention_audit_lab.py
 .\.venv\Scripts\python.exe external_sequential_monitor_lab.py
-.\.venv\Scripts\python.exe -m unittest tests.test_fetch_external_aftershock_population tests.test_external_aftershock_lab tests.test_external_uncertainty_lab tests.test_online_uncertainty_lab tests.test_abstention_audit_lab tests.test_external_sequential_monitor_lab -v
+.\.venv\Scripts\python.exe predictive_sequential_monitor_lab.py
+.\.venv\Scripts\python.exe -m unittest tests.test_fetch_external_aftershock_population tests.test_external_aftershock_lab tests.test_external_uncertainty_lab tests.test_online_uncertainty_lab tests.test_abstention_audit_lab tests.test_external_sequential_monitor_lab tests.test_predictive_sequential_monitor_lab -v
 ```
 
 This first screens the temporally unseen 2026 western cohort without relaxing
