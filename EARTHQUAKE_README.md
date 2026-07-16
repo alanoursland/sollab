@@ -251,6 +251,19 @@ one covered trajectory. The quiet subset covers `19 / 22` (`86.4%`). This is a
 promising selective signal, but it rests on only three eligible alarms and was
 developed after observing the fixed-null failure. It needs a new cohort.
 
+### 12. Repeated calibration removes one marginal alarm
+
+Eight fresh predictive-null calibrations are run for all four alarms and five
+stressed quiet targets. Atka, Chiniak, and Sand Point alarm in `8 / 8` batches;
+all five quiet targets remain quiet in `8 / 8`. The day-30 northern Alaska
+alarm reproduces only `3 / 8` times and is downgraded to a Monte Carlo boundary
+case.
+
+Median target threshold variability is `6.31%`, but ESS alone does not predict
+decision stability. Northern Alaska has high ESS and low threshold variability;
+its statistic simply lies on the threshold. Researchers need repeated-batch
+classification and alarm-margin evidence alongside a single fitted threshold.
+
 ## Relationship to established forecasting practice
 
 This project does not claim state-of-the-art aftershock forecasting. It has not
@@ -289,6 +302,7 @@ The reports are cumulative; each one preserves its own evidence boundary.
 | [26 — Causal abstention audit](reports/26_causal_abstention_audit.md) | Can day-one warning signals identify unsafe intervals? | Simple support, consensus, and width gates reject successes without reliably catching failures. |
 | [27 — External sequential-monitor audit](reports/27_external_sequential_monitor_audit.md) | Does fixed-Poisson alarm calibration transfer? | Simulation calibration survives, but its narrow null makes 64.9% of real external sequences alarm. |
 | [28 — Hierarchy-predictive monitor](reports/28_hierarchy_predictive_sequential_monitor.md) | Can known forecast uncertainty repair the alarm null? | Alarms become rare and precise against raw misses, but sensitivity and timeliness collapse. |
+| [29 — Predictive threshold stability](reports/29_predictive_threshold_stability.md) | Are rare predictive alarms reproducible? | Three survive every fresh calibration; one day-30 alarm is Monte Carlo-sensitive. |
 
 For a short scientific reading path, use reports 12, 18, 20, 21, and 22. Read
 reports 13, 14, 17, and 19 before proposing extra model complexity; they record
@@ -358,7 +372,8 @@ partial pooling easier to understand before moving to the expanded screen.
 .\.venv\Scripts\python.exe abstention_audit_lab.py
 .\.venv\Scripts\python.exe external_sequential_monitor_lab.py
 .\.venv\Scripts\python.exe predictive_sequential_monitor_lab.py
-.\.venv\Scripts\python.exe -m unittest tests.test_fetch_external_aftershock_population tests.test_external_aftershock_lab tests.test_external_uncertainty_lab tests.test_online_uncertainty_lab tests.test_abstention_audit_lab tests.test_external_sequential_monitor_lab tests.test_predictive_sequential_monitor_lab -v
+.\.venv\Scripts\python.exe predictive_threshold_stability_lab.py
+.\.venv\Scripts\python.exe -m unittest tests.test_fetch_external_aftershock_population tests.test_external_aftershock_lab tests.test_external_uncertainty_lab tests.test_online_uncertainty_lab tests.test_abstention_audit_lab tests.test_external_sequential_monitor_lab tests.test_predictive_sequential_monitor_lab tests.test_predictive_threshold_stability_lab -v
 ```
 
 This first screens the temporally unseen 2026 western cohort without relaxing

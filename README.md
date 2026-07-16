@@ -59,6 +59,7 @@ Use the repository's local environment:
 .\.venv\Scripts\python.exe abstention_audit_lab.py
 .\.venv\Scripts\python.exe external_sequential_monitor_lab.py
 .\.venv\Scripts\python.exe predictive_sequential_monitor_lab.py
+.\.venv\Scripts\python.exe predictive_threshold_stability_lab.py
 ```
 
 Generated files are written to `artifacts/`:
@@ -136,6 +137,10 @@ The predictive sequential-monitor follow-up writes
 `predictive_sequential_monitor.png` and `predictive_sequential_monitor.json`,
 propagating first-day-conditioned population-shape uncertainty into complete
 null paths before calibrating the same scan statistic.
+The predictive-threshold stability lab writes
+`predictive_threshold_stability.png` and
+`predictive_threshold_stability.json`, repeating full proposal and path
+calibration to distinguish robust alarms from Monte Carlo boundary cases.
 
 ## Portable research monitor
 

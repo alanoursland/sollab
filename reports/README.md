@@ -46,6 +46,7 @@ figures are committed for convenient review. Results were last reproduced on
 | [Causal abstention audit](26_causal_abstention_audit.md) | Can target-time warning signals identify which external intervals should not be issued? | Consensus and width gates reject covered forecasts while retaining every miss; the simple abstention signals fail. |
 | [External sequential-monitor audit](27_external_sequential_monitor_audit.md) | Does the 1%-calibrated monitor retain its interpretation on external earthquakes? | Its fixed null validates internally, but 64.9% of real external sequences alarm; the null is too narrow. |
 | [Hierarchy-predictive sequential monitor](28_hierarchy_predictive_sequential_monitor.md) | Can a predictive rather than point-Poisson null repair the external alarm flood? | External alarms fall from 24 to four, all raw misses, at a large cost in threshold and detection delay. |
+| [Predictive threshold stability](29_predictive_threshold_stability.md) | Do the four predictive-null alarms survive independent proposal batches? | Three alarms reproduce in 8/8 batches; the day-30 fourth alarm reproduces only 3/8 times. |
 
 ## Reproduction
 
@@ -88,6 +89,7 @@ The Ridgecrest report additionally requires:
 .\.venv\Scripts\python.exe abstention_audit_lab.py
 .\.venv\Scripts\python.exe external_sequential_monitor_lab.py
 .\.venv\Scripts\python.exe predictive_sequential_monitor_lab.py
+.\.venv\Scripts\python.exe predictive_threshold_stability_lab.py
 ```
 
 These are exploratory numerical experiments, not claims that every computed
