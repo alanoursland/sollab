@@ -57,6 +57,7 @@ Use the repository's local environment:
 .\.venv\Scripts\python.exe external_uncertainty_lab.py
 .\.venv\Scripts\python.exe online_uncertainty_lab.py
 .\.venv\Scripts\python.exe abstention_audit_lab.py
+.\.venv\Scripts\python.exe external_sequential_monitor_lab.py
 ```
 
 Generated files are written to `artifacts/`:
@@ -126,6 +127,10 @@ calibration with a 30-day outcome-maturity embargo.
 The abstention audit writes `abstention_audit.png` and `abstention_audit.json`,
 testing whether causal feature novelty, forecast disagreement, or interval
 width can identify unsafe external predictions before their outcomes arrive.
+The external sequential-monitor audit writes `external_sequential_monitor.png`
+and `external_sequential_monitor.json`, contrasting internally valid 1%
+fixed-Poisson calibration with the much broader variation in real external
+sequences.
 
 ## Portable research monitor
 

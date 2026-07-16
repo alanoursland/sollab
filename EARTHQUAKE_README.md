@@ -224,6 +224,20 @@ therefore needs mechanism-linked catalog, rupture, spatial, or evolving
 residual evidence. Merely hiding wide or disagreeing forecasts can make the
 issued subset less reliable.
 
+### 10. A valid simulated threshold can have the wrong real-world null
+
+The unchanged 1%-calibrated sequential monitor alarms on `24 / 37` external
+Alaska-sector sequences. Independent Poisson simulations still validate at
+`0.998%`, proving that numerical threshold calibration works. Real trajectories
+are simply much more variable than fixed independent Poisson paths around one
+fitted mean.
+
+The alarm statistic strongly tracks temporal-shape deviance (`rho = 0.919`),
+so it remains useful for early model criticism. It does not identify which
+rolling total intervals will miss: alarm precision and miss prevalence are
+both 20%. Operational false-alarm language requires a predictive null that
+propagates model, process, and observation uncertainty.
+
 ## Relationship to established forecasting practice
 
 This project does not claim state-of-the-art aftershock forecasting. It has not
@@ -260,6 +274,7 @@ The reports are cumulative; each one preserves its own evidence boundary.
 | [24 — Chronological uncertainty recalibration](reports/24_chronological_uncertainty_recalibration.md) | Can pre-2020 external outcomes calibrate 2020–2025 uncertainty? | Coverage improves substantially but remains below target with much wider intervals. |
 | [25 — Prequential uncertainty calibration](reports/25_prequential_uncertainty_calibration.md) | Can matured outcomes update the next interval online? | Nominal aggregate coverage is attainable only with severe loss of sharpness. |
 | [26 — Causal abstention audit](reports/26_causal_abstention_audit.md) | Can day-one warning signals identify unsafe intervals? | Simple support, consensus, and width gates reject successes without reliably catching failures. |
+| [27 — External sequential-monitor audit](reports/27_external_sequential_monitor_audit.md) | Does fixed-Poisson alarm calibration transfer? | Simulation calibration survives, but its narrow null makes 64.9% of real external sequences alarm. |
 
 For a short scientific reading path, use reports 12, 18, 20, 21, and 22. Read
 reports 13, 14, 17, and 19 before proposing extra model complexity; they record
@@ -327,7 +342,8 @@ partial pooling easier to understand before moving to the expanded screen.
 .\.venv\Scripts\python.exe external_uncertainty_lab.py
 .\.venv\Scripts\python.exe online_uncertainty_lab.py
 .\.venv\Scripts\python.exe abstention_audit_lab.py
-.\.venv\Scripts\python.exe -m unittest tests.test_fetch_external_aftershock_population tests.test_external_aftershock_lab tests.test_external_uncertainty_lab tests.test_online_uncertainty_lab tests.test_abstention_audit_lab -v
+.\.venv\Scripts\python.exe external_sequential_monitor_lab.py
+.\.venv\Scripts\python.exe -m unittest tests.test_fetch_external_aftershock_population tests.test_external_aftershock_lab tests.test_external_uncertainty_lab tests.test_online_uncertainty_lab tests.test_abstention_audit_lab tests.test_external_sequential_monitor_lab -v
 ```
 
 This first screens the temporally unseen 2026 western cohort without relaxing
