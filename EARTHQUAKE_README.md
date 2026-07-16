@@ -264,6 +264,38 @@ decision stability. Northern Alaska has high ESS and low threshold variability;
 its statistic simply lies on the threshold. Researchers need repeated-batch
 classification and alarm-margin evidence alongside a single fitted threshold.
 
+### 13. The complete quiet cohort remains quiet
+
+Four fresh predictive-null calibrations are then run for all 37 external
+targets. All 33 originally quiet targets remain quiet in `4 / 4`; three targets
+alarm in `4 / 4`, and Chiniak alarms in `3 / 4`. No target alarms in only one or
+two batches.
+
+Combining the independent report-29 and full-cohort runs gives Atka and Sand
+Point at `12 / 12`, Chiniak at `11 / 12`, and northern Alaska at `7 / 12`.
+Against rolling intervals, requiring all four full-cohort batches to alarm
+selects two misses and no covered totals, leaving `20 / 23` quiet coverage.
+This attractive rule is post-hoc and still needs another population.
+
+### 14. The rare alarm transfers to Japan and the Kuril margin
+
+A second geography is frozen before download: 2016--2025, 30--50 degrees N,
+125--150 degrees E, with the same M5.8 candidate threshold, 100 km M2.5 local
+catalog, overlap exclusion, and minimum-count rules. Nine of 119 raw candidates
+survive the complete screen.
+
+The western hierarchy and four-batch unanimous rule are transferred unchanged.
+Eight targets remain quiet in `4 / 4` batches. The 2023 Izu Islands target
+alarms in `4 / 4` and is one of three raw interval misses; none of six covered
+targets alarm. The gate therefore retains `8 / 9` forecasts and catches `1 / 3`
+misses in this small replication.
+
+The Izu alarm first occurs at day `22.60` in the lower-rate direction: 21
+events are observed against a predictive median of 77 and central 80% range of
+62--110. It is strong late evidence of forecast-shape failure, not an early or
+escalating-hazard warning. Nine targets are far too few for an operational
+false-alarm or precision claim.
+
 ## Relationship to established forecasting practice
 
 This project does not claim state-of-the-art aftershock forecasting. It has not
@@ -303,6 +335,8 @@ The reports are cumulative; each one preserves its own evidence boundary.
 | [27 — External sequential-monitor audit](reports/27_external_sequential_monitor_audit.md) | Does fixed-Poisson alarm calibration transfer? | Simulation calibration survives, but its narrow null makes 64.9% of real external sequences alarm. |
 | [28 — Hierarchy-predictive monitor](reports/28_hierarchy_predictive_sequential_monitor.md) | Can known forecast uncertainty repair the alarm null? | Alarms become rare and precise against raw misses, but sensitivity and timeliness collapse. |
 | [29 — Predictive threshold stability](reports/29_predictive_threshold_stability.md) | Are rare predictive alarms reproducible? | Three survive every fresh calibration; one day-30 alarm is Monte Carlo-sensitive. |
+| [30 — Full predictive stability replay](reports/30_full_predictive_stability_replay.md) | Did selection hide unstable quiet targets? | All 33 remain quiet; combined repeats clarify robust, near-robust, and marginal alarms. |
+| [31 — Japan/Kuril transfer](reports/31_japan_kuril_transfer.md) | Does rare-alarm consensus survive a second geography? | Eight of nine are unanimously quiet; the sole unanimous alarm is a large late lower-rate raw miss. |
 
 For a short scientific reading path, use reports 12, 18, 20, 21, and 22. Read
 reports 13, 14, 17, and 19 before proposing extra model complexity; they record
@@ -373,7 +407,10 @@ partial pooling easier to understand before moving to the expanded screen.
 .\.venv\Scripts\python.exe external_sequential_monitor_lab.py
 .\.venv\Scripts\python.exe predictive_sequential_monitor_lab.py
 .\.venv\Scripts\python.exe predictive_threshold_stability_lab.py
-.\.venv\Scripts\python.exe -m unittest tests.test_fetch_external_aftershock_population tests.test_external_aftershock_lab tests.test_external_uncertainty_lab tests.test_online_uncertainty_lab tests.test_abstention_audit_lab tests.test_external_sequential_monitor_lab tests.test_predictive_sequential_monitor_lab tests.test_predictive_threshold_stability_lab -v
+.\.venv\Scripts\python.exe full_predictive_stability_lab.py
+.\.venv\Scripts\python.exe fetch_japan_aftershock_population.py
+.\.venv\Scripts\python.exe japan_transfer_lab.py
+.\.venv\Scripts\python.exe -m unittest tests.test_fetch_external_aftershock_population tests.test_external_aftershock_lab tests.test_external_uncertainty_lab tests.test_online_uncertainty_lab tests.test_abstention_audit_lab tests.test_external_sequential_monitor_lab tests.test_predictive_sequential_monitor_lab tests.test_predictive_threshold_stability_lab tests.test_full_predictive_stability_lab -v
 ```
 
 This first screens the temporally unseen 2026 western cohort without relaxing

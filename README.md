@@ -60,6 +60,9 @@ Use the repository's local environment:
 .\.venv\Scripts\python.exe external_sequential_monitor_lab.py
 .\.venv\Scripts\python.exe predictive_sequential_monitor_lab.py
 .\.venv\Scripts\python.exe predictive_threshold_stability_lab.py
+.\.venv\Scripts\python.exe full_predictive_stability_lab.py
+.\.venv\Scripts\python.exe fetch_japan_aftershock_population.py
+.\.venv\Scripts\python.exe japan_transfer_lab.py
 ```
 
 Generated files are written to `artifacts/`:
@@ -141,6 +144,12 @@ The predictive-threshold stability lab writes
 `predictive_threshold_stability.png` and
 `predictive_threshold_stability.json`, repeating full proposal and path
 calibration to distinguish robust alarms from Monte Carlo boundary cases.
+The full predictive-stability replay writes `full_predictive_stability.png` and
+`full_predictive_stability.json`, extending independent calibration batches to
+all 37 external targets and comparing alarm-consensus policies.
+The Japan/Kuril transfer writes `japan_transfer.png` and
+`japan_transfer.json`, applying the frozen western hierarchy and four-batch
+unanimous predictive-null rule to a second geography defined before download.
 
 ## Portable research monitor
 

@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import sys
 import urllib.parse
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
@@ -89,6 +90,14 @@ ALASKA_2010_2025 = ExternalCohort(
 COHORTS = (TEMPORAL_2026, ALASKA_2010_2025)
 
 
+def console_safe(value: str, encoding: str | None = None) -> str:
+    """Escape unsupported place-name characters without changing source data."""
+    target_encoding = encoding or sys.stdout.encoding or "utf-8"
+    return value.encode(target_encoding, errors="backslashreplace").decode(
+        target_encoding
+    )
+
+
 def fetch_cohort(cohort: ExternalCohort, destination: Path) -> dict:
     destination.mkdir(parents=True, exist_ok=True)
     query = cohort.candidate_url
@@ -101,7 +110,10 @@ def fetch_cohort(cohort: ExternalCohort, destination: Path) -> dict:
     for index, candidate in enumerate(independent, start=1):
         spec = sequence_spec(candidate)
         url = source_url(spec)
-        print(f"[{cohort.slug} {index}/{len(independent)}] {spec.name}")
+        print(
+            f"[{cohort.slug} {index}/{len(independent)}] "
+            f"{console_safe(spec.name)}"
+        )
         payload = download(url)
         counts = catalog_counts(payload, candidate)
         reasons = []

@@ -47,6 +47,8 @@ figures are committed for convenient review. Results were last reproduced on
 | [External sequential-monitor audit](27_external_sequential_monitor_audit.md) | Does the 1%-calibrated monitor retain its interpretation on external earthquakes? | Its fixed null validates internally, but 64.9% of real external sequences alarm; the null is too narrow. |
 | [Hierarchy-predictive sequential monitor](28_hierarchy_predictive_sequential_monitor.md) | Can a predictive rather than point-Poisson null repair the external alarm flood? | External alarms fall from 24 to four, all raw misses, at a large cost in threshold and detection delay. |
 | [Predictive threshold stability](29_predictive_threshold_stability.md) | Do the four predictive-null alarms survive independent proposal batches? | Three alarms reproduce in 8/8 batches; the day-30 fourth alarm reproduces only 3/8 times. |
+| [Full predictive stability replay](30_full_predictive_stability_replay.md) | Did the selected stress panel hide unstable quiet targets? | No: all 33 quiet targets remain quiet in 4/4 fresh batches; combined alarm evidence separates two unanimous, one near-unanimous, and one marginal target. |
+| [Japan/Kuril transfer](31_japan_kuril_transfer.md) | Does the rare unanimous alarm survive a second untouched geography? | Eight of nine targets stay quiet in 4/4 batches; the sole unanimous alarm is one of three raw interval misses and a late lower-rate diagnosis. |
 
 ## Reproduction
 
@@ -90,6 +92,9 @@ The Ridgecrest report additionally requires:
 .\.venv\Scripts\python.exe external_sequential_monitor_lab.py
 .\.venv\Scripts\python.exe predictive_sequential_monitor_lab.py
 .\.venv\Scripts\python.exe predictive_threshold_stability_lab.py
+.\.venv\Scripts\python.exe full_predictive_stability_lab.py
+.\.venv\Scripts\python.exe fetch_japan_aftershock_population.py
+.\.venv\Scripts\python.exe japan_transfer_lab.py
 ```
 
 These are exploratory numerical experiments, not claims that every computed

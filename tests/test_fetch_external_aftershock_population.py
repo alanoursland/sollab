@@ -4,10 +4,15 @@ from fetch_external_aftershock_population import (
     ALASKA_2010_2025,
     COHORTS,
     TEMPORAL_2026,
+    console_safe,
 )
 
 
 class ExternalAftershockPopulationFetchTests(unittest.TestCase):
+    def test_console_safe_escapes_unrepresentable_place_name(self):
+        rendered = console_safe("Notoō", "cp1252")
+        self.assertEqual(rendered, "Noto\\u014d")
+
     def test_cohort_names_and_queries_are_frozen(self):
         self.assertEqual(
             [cohort.slug for cohort in COHORTS],

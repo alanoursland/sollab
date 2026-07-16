@@ -49,7 +49,9 @@ def coefficient_of_variation(values: list[float]) -> float:
     return statistics.pstdev(values) / statistics.mean(values)
 
 
-def summarize_target(target: dict, repeats: list[dict]) -> dict:
+def summarize_target(
+    target: dict, repeats: list[dict], selection_reason: str | None = None
+) -> dict:
     thresholds = [item["threshold"] for item in repeats]
     effective_sizes = [item["proposal_effective_sample_size"] for item in repeats]
     alarm_days = [item["first_alarm_day"] for item in repeats if item["alarm"]]
@@ -58,7 +60,13 @@ def summarize_target(target: dict, repeats: list[dict]) -> dict:
     return {
         "event_id": target["event_id"],
         "name": target["name"],
-        "selection_reason": TARGET_PANEL[target["event_id"]],
+        "selection_reason": (
+            TARGET_PANEL.get(target["event_id"], "unspecified")
+            if selection_reason is None
+            else selection_reason
+        ),
+        "raw_interval_miss": target.get("raw_interval_miss"),
+        "rolling_interval_miss": target.get("rolling_interval_miss"),
         "original_threshold": float(target["predictive_threshold"]),
         "original_alarm": original_alarm,
         "repeat_count": len(repeats),
@@ -86,7 +94,9 @@ def summarize_target(target: dict, repeats: list[dict]) -> dict:
     }
 
 
-def summarize_panel(targets: list[dict]) -> dict:
+def summarize_panel(
+    targets: list[dict], repeats_per_target: int = REPEATS
+) -> dict:
     unstable = [target for target in targets if not target["classification_stable"]]
     mismatched = [
         target
@@ -100,8 +110,8 @@ def summarize_panel(targets: list[dict]) -> dict:
     )
     return {
         "target_count": len(targets),
-        "repeats_per_target": REPEATS,
-        "total_calibrations": len(targets) * REPEATS,
+        "repeats_per_target": repeats_per_target,
+        "total_calibrations": len(targets) * repeats_per_target,
         "stable_classification_count": len(targets) - len(unstable),
         "unstable_event_ids": [target["event_id"] for target in unstable],
         "all_repeats_match_original_count": len(targets) - len(mismatched),
@@ -132,7 +142,14 @@ def run_threshold_stability(
     fixed_path: Path = FIXED_EVIDENCE,
     development_dir: Path = DEVELOPMENT_DIR,
     external_dir: Path = EXTERNAL_DIR,
+    target_panel: dict[str, str] | None = None,
+    repeats: int = REPEATS,
+    seed_base: int = 2026072900,
+    claim_boundary: str | None = None,
 ) -> dict:
+    if repeats < 1:
+        raise ValueError("repeats must be positive")
+    selected_panel = TARGET_PANEL if target_panel is None else target_panel
     predictive = json.loads(predictive_path.read_text(encoding="utf-8"))
     predictive_by_id = {
         record["event_id"]: record for record in predictive["records"]
@@ -163,15 +180,15 @@ def run_threshold_stability(
     }
     target_summaries = []
     batch_records = []
-    for target_position, event_id in enumerate(TARGET_PANEL):
+    for target_position, event_id in enumerate(selected_panel):
         sequence = sequence_by_id[event_id]
         target = predictive_by_id[event_id]
         fixed_record = fixed_by_id[event_id]
         central_expected = torch.tensor(fixed_record["expected_counts"], dtype=DTYPE)
         observed = torch.tensor(fixed_record["observed_counts"], dtype=DTYPE)
-        repeats = []
-        for repeat in range(REPEATS):
-            seed = 2026072900 + 100 * target_position + repeat
+        repeat_records = []
+        for repeat in range(repeats):
+            seed = seed_base + 100 * target_position + repeat
             counts, effective_size = sample_population_predictive_counts(
                 sequence,
                 edges,
@@ -203,21 +220,23 @@ def run_threshold_stability(
                 "first_alarm_day": monitor["first_alarm_day"],
                 "direction": monitor["direction"],
             }
-            repeats.append(batch)
+            repeat_records.append(batch)
             batch_records.append(batch)
-        target_summaries.append(summarize_target(target, repeats))
+        target_summaries.append(
+            summarize_target(target, repeat_records, selected_panel[event_id])
+        )
 
     return {
         "experiment": "independent proposal-batch stability of predictive monitor thresholds",
-        "claim_boundary": (
+        "claim_boundary": claim_boundary or (
             "post-hoc diagnostic panel selected from report 28 alarms, high "
             "validation rates, and low effective sample sizes"
         ),
         "proposal_count": PROPOSAL_COUNT,
         "predictive_paths_per_calibration": CALIBRATION_SAMPLES,
-        "repeats_per_target": REPEATS,
-        "target_panel": TARGET_PANEL,
-        "summary": summarize_panel(target_summaries),
+        "repeats_per_target": repeats,
+        "target_panel": selected_panel,
+        "summary": summarize_panel(target_summaries, repeats),
         "targets": target_summaries,
         "batches": batch_records,
     }
