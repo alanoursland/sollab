@@ -9,6 +9,10 @@ For a practitioner-oriented path through reports 12–38, including data
 contracts, reproduction tiers, interpretation, and safety boundaries, see the
 [earthquake and aftershock research guide](../EARTHQUAKE_README.md).
 
+For the connected GitHub and open-source community program in reports 39–42
+and 45, see the
+[open-source community and GitHub research guide](../OPEN_SOURCE_COMMUNITY_README.md).
+
 All reported values come from the JSON evidence generated locally in
 `artifacts/`. The JSON and downloaded source data are intentionally ignored;
 figures are committed for convenient review. Results were last reproduced on

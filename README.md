@@ -12,6 +12,11 @@ Seismologists and earthquake-forecast practitioners should start with the
 the retrospective models, reusable forecast monitor, reproduction paths, and
 public-safety boundaries.
 
+Open-source researchers and repository practitioners should start with the
+[open-source community and GitHub research guide](OPEN_SOURCE_COMMUNITY_README.md).
+It maps the commit-ecology and pull-request program, data and privacy contracts,
+reproduction tiers, interpretation boundaries, and current stopping point.
+
 The earthquake research line's conclusions, withdrawn claims, and stopping
 rule are summarized in [report 38](reports/38_earthquake_program_synthesis.md).
 
