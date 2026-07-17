@@ -40,6 +40,15 @@ evidence-rich event diagnostics.
 
 **Access:** public; no key appears necessary for browser/FTP retrieval.
 
+**Status:** Extended from the original 2015 demonstration in
+[reports 43](reports/43_chronological_multi_storm_transfer.md) and
+[44](reports/44_storm_forcing_gap_robustness.md). A compact forced Dst law beats
+persistence on every later selected storm, while a validation-selected memory
+term fails to transfer. Strict completeness hides the hardest storms: bounded
+gap sensitivity raises mean error from 15.55 to 20.01 nT while retaining 20/20
+baseline wins. The next target is event-varying or multi-stage coupling, with
+missing forcing treated explicitly rather than by complete-case selection.
+
 ## 2. When does an open-source community tip from growth into decline?
 
 **Why I want this:** This is dynamics close to my own world. Repositories are
@@ -70,12 +79,22 @@ review or release policies.
 **Access:** hourly files are public; BigQuery requires a Google Cloud project and
 query costs beyond its free allowance.
 
-**Status:** Started in [reports 39](reports/39_open_source_commit_ecology.md)
-and [40](reports/40_contributor_flow_dynamics.md). The whole-organization
-snapshot establishes a reproducible commit-ecology state; contributor flows
-show that stable volume can hide much greater continuity and lower
-concentration. No decline or tipping-point claim is currently supported;
-pull-request and review dynamics are the next evidence boundary.
+**Status:** Started in [reports 39](reports/39_open_source_commit_ecology.md),
+[40](reports/40_contributor_flow_dynamics.md), and
+[41](reports/41_merge_topology_measurement_audit.md), with API validations in
+[report 42](reports/42_pull_request_collaboration_panel.md) and
+[report 45](reports/45_pull_request_lifecycle_marked_process.md). The
+whole-organization snapshot establishes a reproducible commit ecology;
+contributor flows show that stable volume can hide greater continuity and
+lower concentration; the topology audit shows that first-parent traversal
+retains only 22.6% of reachable author identities; and the PR panel validates
+the integration-style contrast while invalidating formal-review counts as a
+sufficient observation channel. The fixed-creation cohort now preserves merge,
+unmerged close, and right censoring; causal marked-process likelihoods show
+that lifecycle age predicts much better than homogeneous repository/origin
+clocks. No decline or tipping-point claim is currently supported. The next
+evidence boundary is a prospectively specified, larger event cohort with
+inline review activity and calendar workload.
 
 ## 3. How does stress propagate through the interconnected electric grid?
 

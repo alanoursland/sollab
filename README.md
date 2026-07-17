@@ -77,6 +77,14 @@ Use the repository's local environment:
 .\.venv\Scripts\python.exe fetch_open_source_community.py
 .\.venv\Scripts\python.exe open_source_commit_ecology_lab.py
 .\.venv\Scripts\python.exe contributor_flow_lab.py
+.\.venv\Scripts\python.exe merge_topology_audit_lab.py
+.\.venv\Scripts\python.exe fetch_pull_request_panel.py
+.\.venv\Scripts\python.exe pull_request_collaboration_lab.py
+.\.venv\Scripts\python.exe fetch_pull_request_lifecycle_panel.py
+.\.venv\Scripts\python.exe pull_request_lifecycle_lab.py
+.\.venv\Scripts\python.exe fetch_omni_population.py
+.\.venv\Scripts\python.exe multi_storm_transfer_lab.py
+.\.venv\Scripts\python.exe storm_forcing_gap_robustness_lab.py
 ```
 
 Generated files are written to `artifacts/`:
@@ -195,6 +203,24 @@ The contributor-flow follow-up writes `contributor_flow.png` and
 `contributor_flow.json`, decomposing weekly participation into newly observed,
 continuing, and returning author identifiers with a chronological predictive
 check.
+The merge-topology audit writes `merge_topology_audit.png` and
+`merge_topology_audit.json`, comparing reachable and first-parent history and
+showing which contributor claims survive that observation choice.
+The bounded pull-request panel writes `pull_request_collaboration_panel.png`
+and `pull_request_collaboration_panel.json`, validating the merge-topology
+contrast while showing that formal review events alone do not capture the
+observed integration process.
+The fixed-creation lifecycle panel writes
+`pull_request_lifecycle_marked_process.png` and
+`pull_request_lifecycle_marked_process.json`. It preserves merge, unmerged
+close, and right-censored outcomes, then uses causal KinoPulse event histories
+to show that lifecycle age predicts substantially better than one homogeneous
+workflow clock.
+The chronological multi-storm transfer writes `multi_storm_transfer.png` and
+`multi_storm_transfer.json`, evaluating compact and forcing-memory Dst response
+models on later NASA OMNI storms. Its forcing-gap audit writes
+`storm_forcing_gap_robustness.png` and `storm_forcing_gap_robustness.json`,
+showing how complete-case selection censors difficult extreme events.
 
 ## Portable research monitor
 

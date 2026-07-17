@@ -37,7 +37,6 @@ class KinoPulseRelease2026071512Tests(unittest.TestCase):
         self.assertTrue(process["batch_matches_scalar"])
         self.assertTrue(process["simulation_reproducible"])
 
-    @unittest.expectedFailure
     def test_history_dependent_compensator_includes_left_boundary_event(self):
         process = self.evidence["history_dependent_point_process"]
         self.assertLess(process["absolute_error"], 1e-12)

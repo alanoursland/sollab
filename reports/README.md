@@ -12,7 +12,8 @@ contracts, reproduction tiers, interpretation, and safety boundaries, see the
 All reported values come from the JSON evidence generated locally in
 `artifacts/`. The JSON and downloaded source data are intentionally ignored;
 figures are committed for convenient review. Results were last reproduced on
-2026-07-16 using KinoPulse `0.1.0.dev2026071512` in the repository's `.venv`.
+2026-07-16. Report 45 uses KinoPulse `0.1.0.dev2026071623`; earlier release
+validation reports identify their own release under test.
 
 ## Experiment index
 
@@ -58,6 +59,11 @@ figures are committed for convenient review. Results were last reproduced on
 | [Earthquake program synthesis](38_earthquake_program_synthesis.md) | What survived the earthquake program, and where should it stop? | Pause at the observation-system boundary; stronger progress requires new data, marked-process support, or prospective validation. |
 | [Open-source commit ecology](39_open_source_commit_ecology.md) | Can a whole-organization Git history support a defensible community-dynamics experiment? | Recent volume is 97.4% of the prior year, but contribution concentration changes sharply; activity is not health. |
 | [Contributor flow dynamics](40_contributor_flow_dynamics.md) | What renewal mechanisms sit beneath nearly stable commit volume? | Active-author weeks rise 21% and continuing weeks rise 83%, while a flow-aware predictor improves RMSE only 1.0%. |
+| [Merge-topology measurement audit](41_merge_topology_measurement_audit.md) | Does Git traversal policy change the observed contributor ecology? | First-parent history retains only 22.6% of reachable authors, although conditional 52-week return changes by just 1.1 points. |
+| [Pull-request collaboration panel](42_pull_request_collaboration_panel.md) | Does the Git-topology contrast survive a bounded API validation panel? | Yes, but formal reviews appear in only 1/10 PRs per repository and a homogeneous response clock is not meaningful. |
+| [Chronological multi-storm transfer](43_chronological_multi_storm_transfer.md) | Does the compact Dst response law survive later geomagnetic storms? | It beats persistence on 11/11 strict future storms; a validation-selected forcing memory worsens test RMSE by 8.0%. |
+| [Storm forcing-gap robustness](44_storm_forcing_gap_robustness.md) | Does complete-case selection hide difficult storms? | Yes: bounded interpolation admits all 20 later storms and raises honest RMSE from 15.55 to 20.01 nT, while preserving 20/20 baseline wins. |
+| [Pull-request lifecycle marked process](45_pull_request_lifecycle_marked_process.md) | Can a fixed creation cohort support causal response and competing terminal hazards? | Yes; age-structured hazards beat every homogeneous alternative out of sample, while repository/origin detail does not. |
 
 ## Reproduction
 
@@ -73,6 +79,9 @@ The geomagnetic-storm report additionally requires:
 ```powershell
 .\.venv\Scripts\python.exe fetch_omni.py
 .\.venv\Scripts\python.exe space_weather_lab.py
+.\.venv\Scripts\python.exe fetch_omni_population.py
+.\.venv\Scripts\python.exe multi_storm_transfer_lab.py
+.\.venv\Scripts\python.exe storm_forcing_gap_robustness_lab.py
 ```
 
 The Ridgecrest report additionally requires:
@@ -115,6 +124,11 @@ The Ridgecrest report additionally requires:
 .\.venv\Scripts\python.exe fetch_open_source_community.py
 .\.venv\Scripts\python.exe open_source_commit_ecology_lab.py
 .\.venv\Scripts\python.exe contributor_flow_lab.py
+.\.venv\Scripts\python.exe merge_topology_audit_lab.py
+.\.venv\Scripts\python.exe fetch_pull_request_panel.py
+.\.venv\Scripts\python.exe pull_request_collaboration_lab.py
+.\.venv\Scripts\python.exe fetch_pull_request_lifecycle_panel.py
+.\.venv\Scripts\python.exe pull_request_lifecycle_lab.py
 ```
 
 These are exploratory numerical experiments, not claims that every computed
