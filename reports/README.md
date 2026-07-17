@@ -13,10 +13,14 @@ For the connected GitHub and open-source community program in reports 39–42
 and 45, see the
 [open-source community and GitHub research guide](../OPEN_SOURCE_COMMUNITY_README.md).
 
+For the connected ENSO program in reports 47–50, including chronology, public
+data contracts, appropriate use, and the frozen July 2026 scoring rule, see the
+[ENSO dynamics research guide](../ENSO_README.md).
+
 All reported values come from the JSON evidence generated locally in
 `artifacts/`. The JSON and downloaded source data are intentionally ignored;
 figures are committed for convenient review. Results were last reproduced on
-2026-07-16. Reports 45–46 use KinoPulse `0.1.0.dev2026071623`; earlier release
+2026-07-17. Reports 45–50 use KinoPulse `0.1.0.dev2026071623`; earlier release
 validation reports identify their own release under test.
 
 ## Experiment index
@@ -69,6 +73,10 @@ validation reports identify their own release under test.
 | [Storm forcing-gap robustness](44_storm_forcing_gap_robustness.md) | Does complete-case selection hide difficult storms? | Yes: bounded interpolation admits all 20 later storms and raises honest RMSE from 15.55 to 20.01 nT, while preserving 20/20 baseline wins. |
 | [Pull-request lifecycle marked process](45_pull_request_lifecycle_marked_process.md) | Can a fixed creation cohort support causal response and competing terminal hazards? | Yes; age-structured hazards beat every homogeneous alternative out of sample, while repository/origin detail does not. |
 | [Causal storm conformal nowcast](46_causal_storm_conformal_nowcast.md) | Can one-hour Dst predictions carry honest whole-storm uncertainty and selective abstention? | Group-conformal bands cover 16/20 storms while marginal hourly coverage hides the four failures; abstention catches three at substantial retention cost. |
+| [ENSO oscillator or switching](47_enso_oscillator_or_switching.md) | Does threshold switching beat a compact delayed oscillator on untouched MEI.v2 years? | Switching has the best point RMSE, but its 2.7% edge over the oscillator is not distinguishable with eight whole-year test units. |
+| [ENSO recharge state](48_enso_recharge_state.md) | Does equatorial upper-ocean heat add transferable memory beyond scalar MEI dynamics? | The learned coupling has recharge-oscillator signs and anticipates the 2026 sign transition, but loses original validation and misses the heat surge amplitude. |
+| [ENSO wind-driven recharge](49_enso_wind_driven_recharge.md) | Does observed western-Pacific low-level wind improve the next ocean-heat tendency? | Three months of wind history improve later RMSE 9.6% over the matched state model and reveal a stable transient impulse kernel, but the archive ends before 2026. |
+| [ENSO CORe measurement bridge](50_enso_core_measurement_bridge.md) | Can the wind mechanism cross from retired R1 to active CORe without a silent splice? | A frozen affine bridge preserves 92.5% of the later heat-model gain, fails to explain the 2026 surge, and records a prospective July heat prediction. |
 
 ## Reproduction
 
@@ -88,6 +96,19 @@ The geomagnetic-storm report additionally requires:
 .\.venv\Scripts\python.exe multi_storm_transfer_lab.py
 .\.venv\Scripts\python.exe storm_forcing_gap_robustness_lab.py
 .\.venv\Scripts\python.exe storm_conformal_nowcast_lab.py
+```
+
+The ENSO report additionally requires:
+
+```powershell
+.\.venv\Scripts\python.exe fetch_meiv2.py
+.\.venv\Scripts\python.exe enso_oscillator_lab.py
+.\.venv\Scripts\python.exe fetch_enso_heat_content.py
+.\.venv\Scripts\python.exe enso_recharge_lab.py
+.\.venv\Scripts\python.exe fetch_enso_wind.py
+.\.venv\Scripts\python.exe enso_wind_heat_lab.py
+.\.venv\Scripts\python.exe fetch_enso_core_wind.py
+.\.venv\Scripts\python.exe enso_core_bridge_lab.py
 ```
 
 The Ridgecrest report additionally requires:

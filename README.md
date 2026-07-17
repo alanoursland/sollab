@@ -17,6 +17,11 @@ Open-source researchers and repository practitioners should start with the
 It maps the commit-ecology and pull-request program, data and privacy contracts,
 reproduction tiers, interpretation boundaries, and current stopping point.
 
+Climate researchers should start with the
+[ENSO dynamics research guide](ENSO_README.md). It maps the oscillator,
+ocean-recharge, wind-memory, and CORe measurement-bridge experiments and freezes
+the scoring rule for the prospective July 2026 heat-state prediction.
+
 The earthquake research line's conclusions, withdrawn claims, and stopping
 rule are summarized in [report 38](reports/38_earthquake_program_synthesis.md).
 
@@ -27,7 +32,7 @@ diffusion, parametric resonance, and constrained pendulum dynamics. Together
 they exercise simulation, classification, stability, system identification,
 control synthesis, event detection, state resets, TorchScript deployment,
 visualization, and real-data model discovery from NASA space-weather
-observations and the USGS earthquake catalog.
+observations, NOAA's MEI.v2 climate index, and the USGS earthquake catalog.
 
 ## Run
 
@@ -91,6 +96,14 @@ Use the repository's local environment:
 .\.venv\Scripts\python.exe multi_storm_transfer_lab.py
 .\.venv\Scripts\python.exe storm_forcing_gap_robustness_lab.py
 .\.venv\Scripts\python.exe storm_conformal_nowcast_lab.py
+.\.venv\Scripts\python.exe fetch_meiv2.py
+.\.venv\Scripts\python.exe enso_oscillator_lab.py
+.\.venv\Scripts\python.exe fetch_enso_heat_content.py
+.\.venv\Scripts\python.exe enso_recharge_lab.py
+.\.venv\Scripts\python.exe fetch_enso_wind.py
+.\.venv\Scripts\python.exe enso_wind_heat_lab.py
+.\.venv\Scripts\python.exe fetch_enso_core_wind.py
+.\.venv\Scripts\python.exe enso_core_bridge_lab.py
 ```
 
 Generated files are written to `artifacts/`:
@@ -231,6 +244,23 @@ The causal storm-nowcast lab writes `storm_conformal_nowcast.png` and
 `storm_conformal_nowcast.json`. It calibrates maximum one-hour error by storm,
 showing that 99.49% marginal hourly coverage can coexist with only 80% complete
 recovery-path coverage and auditing a calibration-only abstention policy.
+The ENSO oscillator lab writes `enso_oscillator_lab.png` and
+`enso_oscillator_analysis.json`. It selects scalar dynamical structure on
+expanding 2010–2017 folds, opens 2018–2025 once, and uses complete forecast
+years for paired uncertainty rather than treating overlapping monthly index
+values as independent trials.
+The ENSO recharge lab writes `enso_recharge_lab.png` and
+`enso_recharge_analysis.json`. It adds NOAA equatorial upper-300 m heat content,
+separates reused 2018–2025 evidence from a newly scored six-month 2026 path, and
+extracts stable empirical recharge modes without claiming operational skill.
+The ENSO wind/heat lab writes `enso_wind_heat_lab.png` and
+`enso_wind_heat_analysis.json`. It predicts next-month heat change using only
+currently observed low-level wind, exposes a stable three-lag impulse kernel,
+and stops at the terminated NCEP/NCAR R1 archive boundary.
+The CORe bridge lab writes `enso_core_bridge_lab.png` and
+`enso_core_bridge_analysis.json`. It predeclares an R1-to-CORe observation
+mapping, tests whether the frozen wind impulse survives downstream, and records
+a July 2026 heat-state prediction before the outcome is available.
 
 ## Portable research monitor
 

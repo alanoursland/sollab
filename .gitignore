@@ -4,4 +4,5 @@ __pycache__/
 artifacts/*.json
 artifacts/*.pt
 data/
-kinopulse_gaps/
+kinopulse_gaps/*
+!kinopulse_gaps/*.md

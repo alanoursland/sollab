@@ -204,6 +204,22 @@ bifurcation tracking, model comparison, and uncertainty-aware identification.
 **Access:** public monthly time series; richer gridded inputs would require more
 substantial NOAA data handling.
 
+**Status:** The scalar baseline is complete in
+[report 47](reports/47_enso_oscillator_or_switching.md), and
+[report 48](reports/48_enso_recharge_state.md) adds NOAA equatorial upper-ocean
+heat content. The coupled model learns the expected recharge signs and
+anticipates the sharp 2026 sign transition, but it loses the original
+validation selection, its later point gains are uncertain, and it severely
+underpredicts the 2026 heat surge. [Report 49](reports/49_enso_wind_driven_recharge.md)
+then finds a stable three-month low-level-wind impulse that improves later
+one-month heat-change RMSE by 9.6% over the matched no-wind state. The R1 wind
+archive ends before 2026. [Report 50](reports/50_enso_core_measurement_bridge.md)
+completes the predeclared overlap bridge to NOAA CORe: it retains 92.5% of the
+later wind-model gain but does not explain the opened 2026 heat surge. A frozen
+July 2026 heat-state prediction now provides the stopping point. Do not tune
+this branch again until that outcome is available; the next scientifically
+useful act is prospective scoring, not another retrospective model.
+
 ## 7. What dynamical law governs aftershock cascades?
 
 **Status:** Paused after reports 12 through 38. Robust partial pooling improves
