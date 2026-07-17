@@ -104,6 +104,7 @@ Use the repository's local environment:
 .\.venv\Scripts\python.exe enso_wind_heat_lab.py
 .\.venv\Scripts\python.exe fetch_enso_core_wind.py
 .\.venv\Scripts\python.exe enso_core_bridge_lab.py
+.\.venv\Scripts\python.exe gating_residual_lab.py
 ```
 
 Generated files are written to `artifacts/`:
@@ -261,6 +262,10 @@ The CORe bridge lab writes `enso_core_bridge_lab.png` and
 `enso_core_bridge_analysis.json`. It predeclares an R1-to-CORe observation
 mapping, tests whether the frozen wind impulse survives downstream, and records
 a July 2026 heat-state prediction before the outcome is available.
+The structured residual/gating lab writes `gating_residual_lab.png` and
+`gating_residual_analysis.json`. It validates exact hard expert selection,
+straight-through gradients, explicit hysteresis/dwell state, and closed-form
+neural-residual composition against synthetic analytical oracles.
 
 ## Portable research monitor
 
