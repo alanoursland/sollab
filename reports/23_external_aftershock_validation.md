@@ -1,5 +1,11 @@
 # A Frozen Aftershock Hierarchy Leaves Its Home Region
 
+**Later support audit:** report 34 shows that Alaska and western catalogs have
+overlapping but different reporting-network and magnitude-support mixtures.
+This experiment remains an end-to-end catalog-pipeline transfer, not a
+controlled comparison with the observation system held fixed. See
+[the catalog magnitude-support audit](34_catalog_magnitude_support_audit.md).
+
 ## Objective
 
 Test the existing western North America aftershock hierarchy without adding a

@@ -1,4 +1,10 @@
-# The Rare Alarm Transfers to a Second Geography
+# A Rare Alarm Appears in a Second Geography
+
+**Status correction:** the sole alarm is invalidated by the boundary-free
+isolation audit in [report 32](32_japan_alarm_anatomy_and_cohort_edge.md). The
+original frozen-protocol result is preserved below, followed by the correction.
+Report 34 additionally shows that Japan's downloaded rows are effectively M4+
+global reporting rather than magnitude-support-matched M2.5 transfer data.
 
 ## Result
 
@@ -26,6 +32,23 @@ On these nine cases, unanimous-alarm precision is `1 / 1`, miss sensitivity is
 `1 / 3`, quiet-set coverage is `6 / 8` (`75%`), and retention is `8 / 9`
 (`88.9%`). These fractions are descriptive evidence, not reliable estimates of
 future operating characteristics.
+
+## Correction after the cohort-edge audit
+
+Report 32 subsequently found that the sole alarm fails a boundary-free
+isolation check. The selected Izu event lies just north of the cohort's 30
+degree N boundary, while an equal-M6.1 event occurred `0.98` days earlier only
+`32.8` km away, just south of the boundary. The rectangular candidate query
+excluded the earlier event even though the target-centered sequence catalog
+included its swarm.
+
+The clean boundary-audited subset therefore contains eight targets, all quiet
+in all four calibrations, with two raw misses and six covered totals. The
+apparent `1 / 1` alarm precision is withdrawn: there is no valid alarm in this
+small second-geography subset. The original nine-target result below is
+preserved because it faithfully records the frozen rectangular protocol, but
+it must not be cited as independent replication of alarm precision. See
+[report 32](32_japan_alarm_anatomy_and_cohort_edge.md).
 
 ## Frozen cohort protocol
 
@@ -128,17 +151,19 @@ four; there are no one-, two-, or three-batch boundary cases.
 
 ## What changed scientifically
 
-This is the first time the predictive-null consensus rule is asked to survive
-a population that did not motivate its construction. The Japan/Kuril result
-preserves the Alaska pattern: alarms are rare, repeatable, and confined to raw
-misses. It therefore upgrades the rule from a single-geography post-hoc
-observation to a small independent geographic replication.
+This was the first time the predictive-null consensus rule was asked to
+survive a population that did not motivate its construction. The initial
+nine-target result appeared to preserve the Alaska pattern, but the later
+cohort-edge audit invalidated its sole alarm target. The honest conclusion is
+now narrower: the transferred monitor stays quiet on all eight
+boundary-isolated targets, including two raw misses. This provides a small
+specificity stress test but no independent evidence about alarm precision or
+sensitivity.
 
-It does not validate an operational alarm. One success among one alarm has an
-enormous confidence interval, and the cohort screen preferentially retains
-productive sequences. The only alarm arrives after three weeks and points to
-lower activity. The useful interpretation is model governance: a forecast can
-flag that its assumed decay shape no longer describes the observed trajectory.
+The failure is scientifically useful. Model-blind screening is not sufficient
+when a rectangular candidate query clips the very neighborhoods used to claim
+mainshock independence. Cohort geometry must be padded before deduplication,
+or every selected target must receive a boundary-free isolation audit.
 
 ## KinoPulse use and gap refinement
 

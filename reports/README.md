@@ -5,14 +5,14 @@ scientific software studies. They describe the question, model, KinoPulse
 capabilities exercised, numerical procedure, evidence, limitations, and
 release-under-test observations for each lab.
 
-For a practitioner-oriented path through reports 12–22, including data
+For a practitioner-oriented path through reports 12–36, including data
 contracts, reproduction tiers, interpretation, and safety boundaries, see the
 [earthquake and aftershock research guide](../EARTHQUAKE_README.md).
 
 All reported values come from the JSON evidence generated locally in
 `artifacts/`. The JSON and downloaded source data are intentionally ignored;
 figures are committed for convenient review. Results were last reproduced on
-2026-07-15 using KinoPulse `0.1.0.dev2026071512` in the repository's `.venv`.
+2026-07-16 using KinoPulse `0.1.0.dev2026071512` in the repository's `.venv`.
 
 ## Experiment index
 
@@ -48,7 +48,12 @@ figures are committed for convenient review. Results were last reproduced on
 | [Hierarchy-predictive sequential monitor](28_hierarchy_predictive_sequential_monitor.md) | Can a predictive rather than point-Poisson null repair the external alarm flood? | External alarms fall from 24 to four, all raw misses, at a large cost in threshold and detection delay. |
 | [Predictive threshold stability](29_predictive_threshold_stability.md) | Do the four predictive-null alarms survive independent proposal batches? | Three alarms reproduce in 8/8 batches; the day-30 fourth alarm reproduces only 3/8 times. |
 | [Full predictive stability replay](30_full_predictive_stability_replay.md) | Did the selected stress panel hide unstable quiet targets? | No: all 33 quiet targets remain quiet in 4/4 fresh batches; combined alarm evidence separates two unanimous, one near-unanimous, and one marginal target. |
-| [Japan/Kuril transfer](31_japan_kuril_transfer.md) | Does the rare unanimous alarm survive a second untouched geography? | Eight of nine targets stay quiet in 4/4 batches; the sole unanimous alarm is one of three raw interval misses and a late lower-rate diagnosis. |
+| [Japan/Kuril transfer](31_japan_kuril_transfer.md) | Does the rare unanimous alarm survive a second untouched geography? | The frozen rectangle yields one apparent alarm, but a later boundary audit finds that target is not independent. |
+| [Japan alarm anatomy and cohort edge](32_japan_alarm_anatomy_and_cohort_edge.md) | Is the sole second-geography alarm scientifically valid? | No: an equal-M6.1 event 0.98 days earlier and 32.8 km away was clipped by the cohort boundary; all eight valid targets are quiet. |
+| [Foundational cohort isolation audit](33_foundational_cohort_isolation_audit.md) | Did the same selection flaw contaminate the western or Alaska cohorts? | All 12 development targets pass; one Alaska graph-chain ambiguity changes denominators but no substantive conclusion. |
+| [Catalog magnitude-support audit](34_catalog_magnitude_support_audit.md) | Do M2.5 queries create comparable western, Alaska, and Japan catalogs? | No: Japan is effectively all M4+ global reporting; M4 harmonization leaves only three western development sequences. |
+| [Magnitude-floor alarm robustness](35_magnitude_floor_alarm_robustness.md) | Are rare Alaska predictive alarms invariant to the reported-magnitude floor? | No: three original targets are eligible but quiet at M3, one is ineligible, and two different Fox Islands sequences begin alarming. |
+| [Magnitude-time mark coupling](36_magnitude_time_mark_coupling.md) | Is raising the magnitude floor equivalent to random thinning of a common aftershock clock? | No: high magnitudes are strongly front-loaded, and mark timing explains the alarm-identity swap. |
 
 ## Reproduction
 
@@ -95,6 +100,13 @@ The Ridgecrest report additionally requires:
 .\.venv\Scripts\python.exe full_predictive_stability_lab.py
 .\.venv\Scripts\python.exe fetch_japan_aftershock_population.py
 .\.venv\Scripts\python.exe japan_transfer_lab.py
+.\.venv\Scripts\python.exe audit_japan_cohort_isolation.py
+.\.venv\Scripts\python.exe japan_alarm_anatomy_lab.py
+.\.venv\Scripts\python.exe cohort_boundary_audit_lab.py
+.\.venv\Scripts\python.exe cohort_boundary_impact_lab.py
+.\.venv\Scripts\python.exe catalog_magnitude_support_lab.py
+.\.venv\Scripts\python.exe magnitude_floor_alarm_robustness_lab.py
+.\.venv\Scripts\python.exe magnitude_time_coupling_lab.py
 ```
 
 These are exploratory numerical experiments, not claims that every computed

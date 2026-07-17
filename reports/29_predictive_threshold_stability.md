@@ -1,5 +1,11 @@
 # Three Alarms Survive Rerolling the Null
 
+> **Later measurement-channel audit:** The repeated decisions below establish
+> Monte Carlo stability for the M2.5 pipeline only. [Report 35](35_magnitude_floor_alarm_robustness.md)
+> shows that none remains an alarm after an honest M3 refit: three are eligible
+> and quiet, while one is ineligible. Random-seed robustness and observation-
+> policy robustness are different tests.
+
 ## Result
 
 Report 28 replaced a narrow fixed-Poisson monitoring null with complete

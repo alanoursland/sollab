@@ -1,5 +1,11 @@
 # The Quiet Targets Stay Quiet
 
+> **Later measurement-channel audit:** The complete replay below is internally
+> stable for the M2.5 catalog channel. [Report 35](35_magnitude_floor_alarm_robustness.md)
+> finds a different alarm set at M3 and M3.5 after refitting both development
+> and target models. These results should not be read as magnitude-invariant
+> target labels.
+
 ## Result
 
 Report 29 stress-tested nine selected targets and found three reproducible

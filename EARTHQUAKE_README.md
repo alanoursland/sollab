@@ -277,7 +277,7 @@ Against rolling intervals, requiring all four full-cohort batches to alarm
 selects two misses and no covered totals, leaving `20 / 23` quiet coverage.
 This attractive rule is post-hoc and still needs another population.
 
-### 14. The rare alarm transfers to Japan and the Kuril margin
+### 14. A rare alarm appears, then fails the cohort-edge audit
 
 A second geography is frozen before download: 2016--2025, 30--50 degrees N,
 125--150 degrees E, with the same M5.8 candidate threshold, 100 km M2.5 local
@@ -295,6 +295,89 @@ events are observed against a predictive median of 77 and central 80% range of
 62--110. It is strong late evidence of forecast-shape failure, not an early or
 escalating-hazard warning. Nine targets are far too few for an operational
 false-alarm or precision claim.
+
+An event-level follow-up then invalidates the attractive replication. The Izu
+target lies just north of the candidate rectangle's 30 degree N edge; an
+equal-M6.1 event occurred `0.98` days earlier, `32.8` km away, just south of the
+edge. The rectangular candidate query omitted this higher-priority neighbor,
+while the target-centered sequence catalog included its swarm. Across
+boundary-free 150 km, plus-or-minus-45-day audits, Izu is the only one of nine
+targets that fails isolation—and it is the only alarm. All eight valid targets
+are quiet in `4 / 4`, including two raw misses. The second geography therefore
+does not replicate alarm precision.
+
+### 15. The foundational cohorts survive the stronger audit
+
+The same boundary-free audit is applied to every selected western development
+and Alaska external sequence. All 12 western targets pass, preserving the
+population shape, pooling choice, and predictive proposal population.
+
+One of 37 Alaska targets fails the stricter all-neighbor local-dominance rule:
+the July 2020 M6.1 southwest of Sand Point has an equal-M6.1 neighbor 139.8 km
+away that the greedy screen had already rejected against the M7.8 mainshock.
+The neighbor is inside the original rectangle but outside the target's 100 km
+catalog, so this is a graph-policy ambiguity rather than Japan-style prefix
+contamination.
+
+Removing the target as a sensitivity check leaves the same hierarchy ranking,
+the same four predictive alarms, and the same two unanimous rolling alarms.
+Raw coverage moves from `19 / 37` to `19 / 36`; unanimous rolling quiet-set
+coverage moves from `20 / 23` to `19 / 22`. Future manifests should explicitly
+name retained-set independence versus all-neighbor local dominance.
+
+### 16. The Japan catalogs do not share western magnitude support
+
+Although every URL requests M2.5+, the downloaded western rows have median
+magnitude 2.86 and 60.8% fall below M3. Japan/Kuril rows have median magnitude
+4.5, 99.7% are M4+, and every row is reported by the global `us` network.
+Alaska overlaps western support more strongly but still has a different network
+mixture.
+
+Re-applying a common M4.0 floor leaves only three western development
+sequences, compared with nine original Japan sequences. That is too little to
+reproduce the robust population or nested pooling selection. The Japan work is
+therefore an end-to-end software/catalog stress test, not evidence that a
+matched M2.5 physical aftershock law or alarm transfers geographically.
+
+### 17. Alaska alarm identities change with the magnitude channel
+
+The western population and strict-clean Alaska cohort are refit after
+explicitly filtering both catalogs at M2.5, M3.0, M3.5, and M4.0. The original
+pooling strength and 15/15 count screen are frozen; every eligible target gets
+four fresh 8,192-path predictive-threshold calibrations.
+
+Three original alarms are unanimous at M2.5 and the marginal day-30 alarm
+appears in 2/4 batches. At M3, three original targets remain eligible but quiet
+and the fourth is ineligible. A 2011 Fox Islands sequence alarms in 4/4 batches
+instead, while a 2015 Fox Islands sequence alarms in 3/4; the latter becomes
+unanimous at M3.5. No target is a majority alarm at M4.
+
+This is not only count attrition: Chiniak and Sand Point remain eligible
+through M4 but become quiet, while coherent new higher-rate alarms emerge at
+intermediate floors. The monitor detects departures in a declared catalog and
+magnitude channel; it has not identified a magnitude-invariant earthquake
+state.
+
+### 18. High magnitudes are systematically front-loaded
+
+A conditional mark test holds every sequence's total events, first-day events,
+and high-magnitude events fixed, then randomizes which event times carry the
+high labels. This isolates magnitude timing from ordinary Omori count decay.
+
+The exchangeability null is rejected for western and Alaska data at M3, M3.5,
+and M4. In Alaska, M3+ events are 56.3% of first-day events versus 48.6% later;
+M4+ events fall from 13.4% to 7.5%. The signed conditional statistics are
+`12.94` at M3 and `9.10` at M4, both beyond all 16,384 null simulations.
+
+The alarm swap has a matching mechanism. Chiniak and Sand Point are Alaska's
+strongest examples of high magnitudes being front-loaded. The 2011 replacement
+alarm is late-enriched at M3, while the 2015 replacement is nearly neutral
+against a strongly front-loaded reference population. Raising the floor is not
+random thinning of one aftershock clock.
+
+This pattern is consistent with small-event reporting recovering after a
+mainshock, but it does not prove incompleteness: physical magnitude evolution,
+review practice, magnitude conversion, and network changes remain possible.
 
 ## Relationship to established forecasting practice
 
@@ -336,7 +419,12 @@ The reports are cumulative; each one preserves its own evidence boundary.
 | [28 — Hierarchy-predictive monitor](reports/28_hierarchy_predictive_sequential_monitor.md) | Can known forecast uncertainty repair the alarm null? | Alarms become rare and precise against raw misses, but sensitivity and timeliness collapse. |
 | [29 — Predictive threshold stability](reports/29_predictive_threshold_stability.md) | Are rare predictive alarms reproducible? | Three survive every fresh calibration; one day-30 alarm is Monte Carlo-sensitive. |
 | [30 — Full predictive stability replay](reports/30_full_predictive_stability_replay.md) | Did selection hide unstable quiet targets? | All 33 remain quiet; combined repeats clarify robust, near-robust, and marginal alarms. |
-| [31 — Japan/Kuril transfer](reports/31_japan_kuril_transfer.md) | Does rare-alarm consensus survive a second geography? | Eight of nine are unanimously quiet; the sole unanimous alarm is a large late lower-rate raw miss. |
+| [31 — Japan/Kuril transfer](reports/31_japan_kuril_transfer.md) | Does rare-alarm consensus survive a second geography? | The rectangular protocol appears to produce one precise alarm, later invalidated by an edge audit. |
+| [32 — Japan alarm anatomy and cohort edge](reports/32_japan_alarm_anatomy_and_cohort_edge.md) | Is the sole new alarm a valid independent sequence? | No; a clipped equal-M6.1 predecessor contaminated the prefix, and all eight valid targets are quiet. |
+| [33 — Foundational cohort isolation audit](reports/33_foundational_cohort_isolation_audit.md) | Are the western and Alaska populations affected by the same flaw? | Western passes completely; one Alaska graph ambiguity leaves all substantive results unchanged. |
+| [34 — Catalog magnitude-support audit](reports/34_catalog_magnitude_support_audit.md) | Do nominal M2.5 queries produce comparable catalogs? | No; Japan is effectively global M4+ data, and a common M4 floor collapses the western population to three sequences. |
+| [35 — Magnitude-floor alarm robustness](reports/35_magnitude_floor_alarm_robustness.md) | Are Alaska alarm identities stable across magnitude channels? | No; the three still-eligible original targets are quiet at M3 and different Fox Islands sequences alarm instead. |
+| [36 — Magnitude-time mark coupling](reports/36_magnitude_time_mark_coupling.md) | Is a higher magnitude floor merely random thinning? | No; high magnitudes are front-loaded and the replacement alarms violate or weaken that cohort pattern. |
 
 For a short scientific reading path, use reports 12, 18, 20, 21, and 22. Read
 reports 13, 14, 17, and 19 before proposing extra model complexity; they record
@@ -410,6 +498,13 @@ partial pooling easier to understand before moving to the expanded screen.
 .\.venv\Scripts\python.exe full_predictive_stability_lab.py
 .\.venv\Scripts\python.exe fetch_japan_aftershock_population.py
 .\.venv\Scripts\python.exe japan_transfer_lab.py
+.\.venv\Scripts\python.exe audit_japan_cohort_isolation.py
+.\.venv\Scripts\python.exe japan_alarm_anatomy_lab.py
+.\.venv\Scripts\python.exe cohort_boundary_audit_lab.py
+.\.venv\Scripts\python.exe cohort_boundary_impact_lab.py
+.\.venv\Scripts\python.exe catalog_magnitude_support_lab.py
+.\.venv\Scripts\python.exe magnitude_floor_alarm_robustness_lab.py
+.\.venv\Scripts\python.exe magnitude_time_coupling_lab.py
 .\.venv\Scripts\python.exe -m unittest tests.test_fetch_external_aftershock_population tests.test_external_aftershock_lab tests.test_external_uncertainty_lab tests.test_online_uncertainty_lab tests.test_abstention_audit_lab tests.test_external_sequential_monitor_lab tests.test_predictive_sequential_monitor_lab tests.test_predictive_threshold_stability_lab tests.test_full_predictive_stability_lab -v
 ```
 

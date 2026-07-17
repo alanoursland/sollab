@@ -63,6 +63,13 @@ Use the repository's local environment:
 .\.venv\Scripts\python.exe full_predictive_stability_lab.py
 .\.venv\Scripts\python.exe fetch_japan_aftershock_population.py
 .\.venv\Scripts\python.exe japan_transfer_lab.py
+.\.venv\Scripts\python.exe audit_japan_cohort_isolation.py
+.\.venv\Scripts\python.exe japan_alarm_anatomy_lab.py
+.\.venv\Scripts\python.exe cohort_boundary_audit_lab.py
+.\.venv\Scripts\python.exe cohort_boundary_impact_lab.py
+.\.venv\Scripts\python.exe catalog_magnitude_support_lab.py
+.\.venv\Scripts\python.exe magnitude_floor_alarm_robustness_lab.py
+.\.venv\Scripts\python.exe magnitude_time_coupling_lab.py
 ```
 
 Generated files are written to `artifacts/`:
@@ -150,6 +157,25 @@ all 37 external targets and comparing alarm-consensus policies.
 The Japan/Kuril transfer writes `japan_transfer.png` and
 `japan_transfer.json`, applying the frozen western hierarchy and four-batch
 unanimous predictive-null rule to a second geography defined before download.
+The cohort-edge audit and alarm-anatomy follow-up write
+`japan_cohort_isolation_audit.png` and `japan_alarm_anatomy.png`. They show that
+the transfer's sole alarm was a rectangular-boundary selection leak, leaving
+eight boundary-isolated targets and no valid alarms.
+The foundational cohort audit writes `cohort_boundary_audit.png` and
+`cohort_boundary_impact.png`. All 12 western development targets pass; a single
+Alaska graph-policy ambiguity changes denominators but not model or alarm
+conclusions.
+The catalog support audit writes `catalog_magnitude_support.png` and
+`catalog_magnitude_support.json`, showing that the Japan/Kuril catalogs are
+effectively global M4+ reporting and cannot support a matched-M2.5 transfer
+claim with the existing western population.
+The magnitude-floor robustness lab writes
+`magnitude_floor_alarm_robustness.png` and
+`magnitude_floor_alarm_robustness.json`, refitting the clean Alaska audit across
+four reported-magnitude channels and showing that alarm identities change.
+The magnitude-time coupling lab writes `magnitude_time_coupling.png` and
+`magnitude_time_coupling.json`, conditionally testing whether high-magnitude
+labels are exchangeable between the first day and the rest of the forecast.
 
 ## Portable research monitor
 

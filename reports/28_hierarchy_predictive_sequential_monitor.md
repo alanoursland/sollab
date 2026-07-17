@@ -1,5 +1,11 @@
 # A Better Null Knows When to Stay Quiet
 
+> **Later measurement-channel audit:** The four alarm identities below belong
+> to the downloaded M2.5 protocol. [Report 35](35_magnitude_floor_alarm_robustness.md)
+> refits the population and targets at higher reported-magnitude floors; none
+> of the four remains an alarm at M3, while two different sequences begin
+> alarming. Seed stability does not imply magnitude-channel invariance.
+
 ## Result
 
 The fixed-Poisson monitor in report 27 was numerically calibrated but
