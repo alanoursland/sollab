@@ -105,6 +105,8 @@ Use the repository's local environment:
 .\.venv\Scripts\python.exe fetch_enso_core_wind.py
 .\.venv\Scripts\python.exe enso_core_bridge_lab.py
 .\.venv\Scripts\python.exe gating_residual_lab.py
+.\.venv\Scripts\python.exe stochastic_uncertainty_lab.py
+.\.venv\Scripts\python.exe batched_bouncing_lab.py
 ```
 
 Generated files are written to `artifacts/`:
@@ -266,6 +268,14 @@ The structured residual/gating lab writes `gating_residual_lab.png` and
 `gating_residual_analysis.json`. It validates exact hard expert selection,
 straight-through gradients, explicit hysteresis/dwell state, and closed-form
 neural-residual composition against synthetic analytical oracles.
+The stochastic uncertainty lab writes `stochastic_uncertainty_lab.png` and
+`stochastic_uncertainty_analysis.json`. It validates supplied-noise diffusion,
+aleatoric covariance, and ensemble epistemic variance, while preserving a gap
+where stochastic ensemble composition drops member diffusion uncertainty.
+The batched bouncing-ball lab writes `batched_bouncing_lab.png` and
+`batched_bouncing_analysis.json`. It validates physical event accuracy, exact
+serial/concurrent replay, ragged padded histories, synchronized-trace rejection,
+and ordered partial results around a sample-specific worker exception.
 
 ## Portable research monitor
 

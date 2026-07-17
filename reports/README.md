@@ -20,7 +20,7 @@ data contracts, appropriate use, and the frozen July 2026 scoring rule, see the
 All reported values come from the JSON evidence generated locally in
 `artifacts/`. The JSON and downloaded source data are intentionally ignored;
 figures are committed for convenient review. Results were last reproduced on
-2026-07-17. Reports 45–50 use KinoPulse `0.1.0.dev2026071623`; report 51 uses
+2026-07-17. Reports 45–50 use KinoPulse `0.1.0.dev2026071623`; reports 51–53 use
 `0.1.0.dev2026071712`; earlier release-validation reports identify their own
 release under test.
 
@@ -79,6 +79,8 @@ release under test.
 | [ENSO wind-driven recharge](49_enso_wind_driven_recharge.md) | Does observed western-Pacific low-level wind improve the next ocean-heat tendency? | Three months of wind history improve later RMSE 9.6% over the matched state model and reveal a stable transient impulse kernel, but the archive ends before 2026. |
 | [ENSO CORe measurement bridge](50_enso_core_measurement_bridge.md) | Can the wind mechanism cross from retired R1 to active CORe without a silent splice? | A frozen affine bridge preserves 92.5% of the later heat-model gain, fails to explain the 2026 surge, and records a prospective July heat prediction. |
 | [Structured residual gating](51_structured_residual_gating_validation.md) | Can a learned gate suppress threshold chatter while retaining exact expert choices and useful gradients? | Hysteresis and dwell reduce 14 naive switches to the two true transitions; structured residuals match closed-form composition exactly. |
+| [Stochastic uncertainty decomposition](52_stochastic_uncertainty_decomposition.md) | Do learned drift, diffusion, supplied noise, and ensemble disagreement reproduce analytical moments? | Individual aleatoric and epistemic contracts pass; stochastic ensembles silently discard member diffusion covariance. |
+| [Batched hybrid isolation](53_batched_hybrid_isolation.md) | Do concurrent bouncing-ball trajectories preserve physical events, ragged histories, synchronization diagnostics, and valid neighbors around a failed sample? | Serial and concurrent paths are bit-exact; physical oracles pass and partial failures retain ordered results. |
 
 ## Reproduction
 
