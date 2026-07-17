@@ -12,7 +12,7 @@ contracts, reproduction tiers, interpretation, and safety boundaries, see the
 All reported values come from the JSON evidence generated locally in
 `artifacts/`. The JSON and downloaded source data are intentionally ignored;
 figures are committed for convenient review. Results were last reproduced on
-2026-07-16. Report 45 uses KinoPulse `0.1.0.dev2026071623`; earlier release
+2026-07-16. Reports 45–46 use KinoPulse `0.1.0.dev2026071623`; earlier release
 validation reports identify their own release under test.
 
 ## Experiment index
@@ -64,6 +64,7 @@ validation reports identify their own release under test.
 | [Chronological multi-storm transfer](43_chronological_multi_storm_transfer.md) | Does the compact Dst response law survive later geomagnetic storms? | It beats persistence on 11/11 strict future storms; a validation-selected forcing memory worsens test RMSE by 8.0%. |
 | [Storm forcing-gap robustness](44_storm_forcing_gap_robustness.md) | Does complete-case selection hide difficult storms? | Yes: bounded interpolation admits all 20 later storms and raises honest RMSE from 15.55 to 20.01 nT, while preserving 20/20 baseline wins. |
 | [Pull-request lifecycle marked process](45_pull_request_lifecycle_marked_process.md) | Can a fixed creation cohort support causal response and competing terminal hazards? | Yes; age-structured hazards beat every homogeneous alternative out of sample, while repository/origin detail does not. |
+| [Causal storm conformal nowcast](46_causal_storm_conformal_nowcast.md) | Can one-hour Dst predictions carry honest whole-storm uncertainty and selective abstention? | Group-conformal bands cover 16/20 storms while marginal hourly coverage hides the four failures; abstention catches three at substantial retention cost. |
 
 ## Reproduction
 
@@ -82,6 +83,7 @@ The geomagnetic-storm report additionally requires:
 .\.venv\Scripts\python.exe fetch_omni_population.py
 .\.venv\Scripts\python.exe multi_storm_transfer_lab.py
 .\.venv\Scripts\python.exe storm_forcing_gap_robustness_lab.py
+.\.venv\Scripts\python.exe storm_conformal_nowcast_lab.py
 ```
 
 The Ridgecrest report additionally requires:

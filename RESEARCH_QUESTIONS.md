@@ -46,8 +46,13 @@ evidence-rich event diagnostics.
 persistence on every later selected storm, while a validation-selected memory
 term fails to transfer. Strict completeness hides the hardest storms: bounded
 gap sensitivity raises mean error from 15.55 to 20.01 nT while retaining 20/20
-baseline wins. The next target is event-varying or multi-stage coupling, with
-missing forcing treated explicitly rather than by complete-case selection.
+baseline wins. [Report 46](reports/46_causal_storm_conformal_nowcast.md) then
+uses causal forward-fill and one-hour predictions: an 80% group-conformal band
+covers 16/20 complete recovery paths, while 99.49% marginal hourly coverage
+would hide the failures. A pre-minimum abstention score catches three of four
+misses but rejects five correct bands at its least restrictive frozen threshold.
+The next target is a prospectively frozen new-storm replay or independent
+high-resolution SYM-H validation, not more threshold tuning on these storms.
 
 ## 2. When does an open-source community tip from growth into decline?
 

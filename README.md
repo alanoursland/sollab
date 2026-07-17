@@ -85,6 +85,7 @@ Use the repository's local environment:
 .\.venv\Scripts\python.exe fetch_omni_population.py
 .\.venv\Scripts\python.exe multi_storm_transfer_lab.py
 .\.venv\Scripts\python.exe storm_forcing_gap_robustness_lab.py
+.\.venv\Scripts\python.exe storm_conformal_nowcast_lab.py
 ```
 
 Generated files are written to `artifacts/`:
@@ -221,6 +222,10 @@ The chronological multi-storm transfer writes `multi_storm_transfer.png` and
 models on later NASA OMNI storms. Its forcing-gap audit writes
 `storm_forcing_gap_robustness.png` and `storm_forcing_gap_robustness.json`,
 showing how complete-case selection censors difficult extreme events.
+The causal storm-nowcast lab writes `storm_conformal_nowcast.png` and
+`storm_conformal_nowcast.json`. It calibrates maximum one-hour error by storm,
+showing that 99.49% marginal hourly coverage can coexist with only 80% complete
+recovery-path coverage and auditing a calibration-only abstention policy.
 
 ## Portable research monitor
 
