@@ -70,6 +70,13 @@ review or release policies.
 **Access:** hourly files are public; BigQuery requires a Google Cloud project and
 query costs beyond its free allowance.
 
+**Status:** Started in [reports 39](reports/39_open_source_commit_ecology.md)
+and [40](reports/40_contributor_flow_dynamics.md). The whole-organization
+snapshot establishes a reproducible commit-ecology state; contributor flows
+show that stable volume can hide much greater continuity and lower
+concentration. No decline or tipping-point claim is currently supported;
+pull-request and review dynamics are the next evidence boundary.
+
 ## 3. How does stress propagate through the interconnected electric grid?
 
 **Why I want this:** A power grid is a network that must continually balance
@@ -175,12 +182,13 @@ substantial NOAA data handling.
 
 ## 7. What dynamical law governs aftershock cascades?
 
-**Status:** Four aftershock experiments are documented in reports 12 through
-16. The first three establish the Ridgecrest baseline and expose temporal and
-spatial overfitting. The fourth adds eight whole-sequence USGS folds. The fifth
-uses nested robust partial pooling, cutting summed deviance by `74.1%` versus a
-shared shape while covering seven of eight totals. Predicting which physical
-covariates drive population escape is now the important test.
+**Status:** Paused after reports 12 through 38. Robust partial pooling improves
+whole-sequence count forecasts, but external uncertainty is poorly calibrated,
+alarm identities depend on the reported-magnitude channel, and high magnitudes
+are systematically front-loaded even within recorded network and magnitude-
+type strata. Report 38 records the stopping rule: resume only with matched
+catalogs and completeness estimates, marked-process observation modeling, or a
+prospectively frozen benchmark cohort.
 
 **Why I want this:** Earthquakes are events interacting across time, magnitude,
 depth, and space. They challenge KinoPulse to connect continuous latent stress

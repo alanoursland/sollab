@@ -5,7 +5,7 @@ scientific software studies. They describe the question, model, KinoPulse
 capabilities exercised, numerical procedure, evidence, limitations, and
 release-under-test observations for each lab.
 
-For a practitioner-oriented path through reports 12–36, including data
+For a practitioner-oriented path through reports 12–38, including data
 contracts, reproduction tiers, interpretation, and safety boundaries, see the
 [earthquake and aftershock research guide](../EARTHQUAKE_README.md).
 
@@ -54,6 +54,10 @@ figures are committed for convenient review. Results were last reproduced on
 | [Catalog magnitude-support audit](34_catalog_magnitude_support_audit.md) | Do M2.5 queries create comparable western, Alaska, and Japan catalogs? | No: Japan is effectively all M4+ global reporting; M4 harmonization leaves only three western development sequences. |
 | [Magnitude-floor alarm robustness](35_magnitude_floor_alarm_robustness.md) | Are rare Alaska predictive alarms invariant to the reported-magnitude floor? | No: three original targets are eligible but quiet at M3, one is ineligible, and two different Fox Islands sequences begin alarming. |
 | [Magnitude-time mark coupling](36_magnitude_time_mark_coupling.md) | Is raising the magnitude floor equivalent to random thinning of a common aftershock clock? | No: high magnitudes are strongly front-loaded, and mark timing explains the alarm-identity swap. |
+| [Reporting-provenance stratification](37_reporting_provenance_stratification.md) | Does changing network or magnitude-type composition explain the mark-timing effect? | Only partly: network conditioning changes almost nothing and a strong within-magnitude-type residual remains. |
+| [Earthquake program synthesis](38_earthquake_program_synthesis.md) | What survived the earthquake program, and where should it stop? | Pause at the observation-system boundary; stronger progress requires new data, marked-process support, or prospective validation. |
+| [Open-source commit ecology](39_open_source_commit_ecology.md) | Can a whole-organization Git history support a defensible community-dynamics experiment? | Recent volume is 97.4% of the prior year, but contribution concentration changes sharply; activity is not health. |
+| [Contributor flow dynamics](40_contributor_flow_dynamics.md) | What renewal mechanisms sit beneath nearly stable commit volume? | Active-author weeks rise 21% and continuing weeks rise 83%, while a flow-aware predictor improves RMSE only 1.0%. |
 
 ## Reproduction
 
@@ -107,6 +111,10 @@ The Ridgecrest report additionally requires:
 .\.venv\Scripts\python.exe catalog_magnitude_support_lab.py
 .\.venv\Scripts\python.exe magnitude_floor_alarm_robustness_lab.py
 .\.venv\Scripts\python.exe magnitude_time_coupling_lab.py
+.\.venv\Scripts\python.exe magnitude_provenance_stratification_lab.py
+.\.venv\Scripts\python.exe fetch_open_source_community.py
+.\.venv\Scripts\python.exe open_source_commit_ecology_lab.py
+.\.venv\Scripts\python.exe contributor_flow_lab.py
 ```
 
 These are exploratory numerical experiments, not claims that every computed

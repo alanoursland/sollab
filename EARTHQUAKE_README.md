@@ -379,6 +379,40 @@ This pattern is consistent with small-event reporting recovering after a
 mainshock, but it does not prove incompleteness: physical magnitude evolution,
 review practice, magnitude conversion, and network changes remain possible.
 
+### 19. Recorded provenance explains only part of the effect
+
+The conditional mark test is repeated within earthquake × network,
+earthquake × magnitude type, and earthquake × network × magnitude type strata.
+This prevents an early excess of `mb` rows or a late shift in reporting network
+from masquerading as within-provenance magnitude timing.
+
+Network conditioning changes almost nothing. Magnitude-type conditioning
+reduces Alaska's signed z from `12.94` to `11.03` at M3 and from `9.10` to
+`5.25` at M4. Conditioning on both fields still gives `z = 4.94` at M4,
+beyond all 16,384 null draws, while retaining 74.2% of events in informative
+strata. Western signals persist or strengthen.
+
+The recorded provenance mixture therefore contributes at high thresholds but
+does not explain away mark timing. `net` and `magType` are coarse reporting
+fields, not a reconstruction of detection probability; within-category
+observation recovery, physical evolution, and unrecorded covariates remain
+entangled.
+
+### 20. Program stopping point
+
+The earthquake line pauses here. The remaining scientific ambiguity—physical
+magnitude evolution versus a time-varying observation process—cannot be
+resolved from the frozen catalog fields. Common M4 support leaves only three
+western sequences, Alaska and Japan have been used repeatedly for model
+criticism, and no prospective or established-model comparison has been run.
+
+Reopening should require materially new capability: matched regional catalogs
+with completeness estimates, a validated marked-process observation model, or
+a prospectively frozen cohort and benchmark protocol. More slicing of the same
+USGS rows would not provide an independent answer.
+
+The complete decision record is [report 38](reports/38_earthquake_program_synthesis.md).
+
 ## Relationship to established forecasting practice
 
 This project does not claim state-of-the-art aftershock forecasting. It has not
@@ -425,6 +459,8 @@ The reports are cumulative; each one preserves its own evidence boundary.
 | [34 — Catalog magnitude-support audit](reports/34_catalog_magnitude_support_audit.md) | Do nominal M2.5 queries produce comparable catalogs? | No; Japan is effectively global M4+ data, and a common M4 floor collapses the western population to three sequences. |
 | [35 — Magnitude-floor alarm robustness](reports/35_magnitude_floor_alarm_robustness.md) | Are Alaska alarm identities stable across magnitude channels? | No; the three still-eligible original targets are quiet at M3 and different Fox Islands sequences alarm instead. |
 | [36 — Magnitude-time mark coupling](reports/36_magnitude_time_mark_coupling.md) | Is a higher magnitude floor merely random thinning? | No; high magnitudes are front-loaded and the replacement alarms violate or weaken that cohort pattern. |
+| [37 — Reporting-provenance stratification](reports/37_reporting_provenance_stratification.md) | Does recorded network or magnitude type explain mark timing? | Only partly; network has almost no effect and the within-type residual remains strong. |
+| [38 — Earthquake program synthesis](reports/38_earthquake_program_synthesis.md) | What survived, and where should this research line stop? | Pause at the observation-system boundary pending new data, marked-process support, or prospective validation. |
 
 For a short scientific reading path, use reports 12, 18, 20, 21, and 22. Read
 reports 13, 14, 17, and 19 before proposing extra model complexity; they record
@@ -505,6 +541,7 @@ partial pooling easier to understand before moving to the expanded screen.
 .\.venv\Scripts\python.exe catalog_magnitude_support_lab.py
 .\.venv\Scripts\python.exe magnitude_floor_alarm_robustness_lab.py
 .\.venv\Scripts\python.exe magnitude_time_coupling_lab.py
+.\.venv\Scripts\python.exe magnitude_provenance_stratification_lab.py
 .\.venv\Scripts\python.exe -m unittest tests.test_fetch_external_aftershock_population tests.test_external_aftershock_lab tests.test_external_uncertainty_lab tests.test_online_uncertainty_lab tests.test_abstention_audit_lab tests.test_external_sequential_monitor_lab tests.test_predictive_sequential_monitor_lab tests.test_predictive_threshold_stability_lab tests.test_full_predictive_stability_lab -v
 ```
 

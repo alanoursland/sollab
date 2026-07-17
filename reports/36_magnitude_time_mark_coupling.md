@@ -71,6 +71,11 @@ magnitude-type conversion, review-policy changes, spatial migration, or
 network mixture. This audit detects mark-time dependence; it does not identify
 its cause or estimate completeness.
 
+[Report 37](37_reporting_provenance_stratification.md) conditions the same test
+on reporting network and exact magnitude type. Network mixture explains almost
+nothing; magnitude type explains part of Alaska's high-threshold signal, but a
+strong within-provenance residual remains.
+
 The pooled early and late fractions in the table are descriptive only. The
 inferential result conditions separately within every sequence, so prolific
 earthquakes cannot create significance merely by dominating a pooled row

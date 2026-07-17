@@ -12,6 +12,9 @@ Seismologists and earthquake-forecast practitioners should start with the
 the retrospective models, reusable forecast monitor, reproduction paths, and
 public-safety boundaries.
 
+The earthquake research line's conclusions, withdrawn claims, and stopping
+rule are summarized in [report 38](reports/38_earthquake_program_synthesis.md).
+
 This repository is an experimental field guide to nonlinear dynamics built with
 KinoPulse. The exhibits explore Lorenz chaos, pitchfork bifurcations, LQR
 control, sparse equation discovery, hybrid bouncing-ball dynamics, and heat
@@ -70,6 +73,10 @@ Use the repository's local environment:
 .\.venv\Scripts\python.exe catalog_magnitude_support_lab.py
 .\.venv\Scripts\python.exe magnitude_floor_alarm_robustness_lab.py
 .\.venv\Scripts\python.exe magnitude_time_coupling_lab.py
+.\.venv\Scripts\python.exe magnitude_provenance_stratification_lab.py
+.\.venv\Scripts\python.exe fetch_open_source_community.py
+.\.venv\Scripts\python.exe open_source_commit_ecology_lab.py
+.\.venv\Scripts\python.exe contributor_flow_lab.py
 ```
 
 Generated files are written to `artifacts/`:
@@ -176,6 +183,18 @@ four reported-magnitude channels and showing that alarm identities change.
 The magnitude-time coupling lab writes `magnitude_time_coupling.png` and
 `magnitude_time_coupling.json`, conditionally testing whether high-magnitude
 labels are exchangeable between the first day and the rest of the forecast.
+The reporting-provenance stratification lab writes
+`magnitude_provenance_stratification.png` and
+`magnitude_provenance_stratification.json`, testing whether network or
+magnitude-type composition explains the mark-timing result.
+The open-source commit-ecology lab writes `open_source_commit_ecology.png` and
+`open_source_commit_ecology.json`. It freezes a whole public organization,
+measures activity composition, and explicitly stops short of treating commits
+as project health.
+The contributor-flow follow-up writes `contributor_flow.png` and
+`contributor_flow.json`, decomposing weekly participation into newly observed,
+continuing, and returning author identifiers with a chronological predictive
+check.
 
 ## Portable research monitor
 
